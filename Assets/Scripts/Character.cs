@@ -5,7 +5,7 @@ public class Character : MonoBehaviour
     public Health health;
 
     [SerializeField] protected float moveSpeed;
-    [SerializeField] protected Rigidbody2D myrigidbody;
+    [SerializeField] protected Rigidbody2D myRigidbody;
     [SerializeField] protected SpriteRenderer sprite;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,14 +20,14 @@ public class Character : MonoBehaviour
         
     }
 
-    protected virtual void Attack()
+    public virtual void Attack()
     {
         Debug.Log("Pew Pew");
     }
 
-    protected virtual void Move()
+    public virtual void Move(Vector2 direction)
     {
-        transform.position += transform.up;
+        myRigidbody.AddForce(direction * moveSpeed);
     }
 
     protected virtual void Explode()

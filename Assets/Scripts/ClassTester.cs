@@ -2,14 +2,28 @@ using UnityEngine;
 
 public class ClassTester : MonoBehaviour
 {
-    Health referenceToHealth;
-    Person subject1;
-    Calculator myCalculator;
+    Animal[] myFarm;
+    GameObject powerUp;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log(FindObjectsByType<Character>(FindObjectsSortMode.None).Length.ToString());
+        IPickable p = powerUp.GetComponent<IPickable>();
+        p.PickUp();
+
+        myFarm[0] = new Bird();
+        myFarm[1] = new Mammal();
+        myFarm[2] = new Fish();
+
+        foreach (Animal animal in myFarm)
+        {
+            if (animal is IFly)
+            {
+                
+            }
+        }
+
+
     }
 
     // Update is called once per frame

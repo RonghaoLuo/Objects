@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShootingEnemy : Enemy
 {
-    protected override void Attack()
+    public override void Attack()
     {
         Debug.Log("Shoot Shoot");
     }
