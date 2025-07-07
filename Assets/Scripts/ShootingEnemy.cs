@@ -4,6 +4,10 @@ public class ShootingEnemy : Enemy, IShootable
 {
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _projectileSpeed = 1f;
+    [SerializeField] private float _shootInverval = 1;
+
+    private float _timer = 0f;
+
 
     public override void Attack()
     {
@@ -34,6 +38,11 @@ public class ShootingEnemy : Enemy, IShootable
 
     protected void Update()
     {
-        
+        _timer += Time.deltaTime;
+        if (_timer >= _shootInverval)
+        {
+            _timer = 0;
+            ShootTowards(_player.gameObject);
+        }
     }
 }
