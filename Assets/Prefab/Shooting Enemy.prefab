@@ -133,6 +133,7 @@ MonoBehaviour:
   sprite: {fileID: 8471211511035741606}
   distanceToAttack: 1
   _projectilePrefab: {fileID: 8383309284631224514, guid: e97c34ce060831144a0b8ff7ea5b1c2a, type: 3}
+  _projectileSpeed: 5
 --- !u!212 &8471211511035741606 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8684850507409117538, guid: 3c80f61224d768d4e9728119e346b433, type: 3}

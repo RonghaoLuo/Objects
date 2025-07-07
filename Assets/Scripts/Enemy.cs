@@ -4,6 +4,8 @@ public class Enemy : Character
 {
     [SerializeField] protected float distanceToAttack;
 
+    protected Player _player;
+
     public override void Attack()
     {
         Debug.Log("Pow Pow");
@@ -12,5 +14,7 @@ public class Enemy : Character
     protected override void Start()
     {
         ChangeSpriteColor(Color.red);
+
+        _player = FindAnyObjectByType<Player>();
     }
 }

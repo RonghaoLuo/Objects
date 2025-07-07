@@ -14,12 +14,6 @@ public class Character : MonoBehaviour
         ChangeSpriteColor(Color.white);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public virtual void Attack()
     {
         Debug.Log("Pew Pew");
