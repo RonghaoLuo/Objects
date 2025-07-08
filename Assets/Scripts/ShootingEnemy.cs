@@ -36,8 +36,10 @@ public class ShootingEnemy : Enemy, IShootable
         ShootTowards(_player.gameObject);
     }
 
-    protected void Update()
+    protected override void Update()
     {
+        base.Update();
+
         _timer += Time.deltaTime;
         if (_timer >= _shootInverval)
         {

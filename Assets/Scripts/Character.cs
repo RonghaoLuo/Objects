@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public Health health;
+    public Health health = new();
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Rigidbody2D myRigidbody;
@@ -12,6 +12,14 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         ChangeSpriteColor(Color.white);
+    }
+
+    protected virtual void Update()
+    {
+        if (health.IsDead())
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void Attack()

@@ -2,35 +2,41 @@ using UnityEngine;
 
 public class Health
 {
-    private int value;
+    private int _healthPoint;
 
     public Health(int initialHealth = 100)
     {
-        value = initialHealth;
+        _healthPoint = initialHealth;
     }
 
     public void DisplayHealth()
     {
-        Debug.Log(value);
+        Debug.Log(_healthPoint);
     }
 
     public void Damage(int toDamage)
     {
-        value -= toDamage;
+        _healthPoint -= toDamage;
+        DisplayHealth();
     }
 
     public void Heal(int toHeal)
     {
-        value += toHeal;
+        _healthPoint += toHeal;
     }
 
     public bool IsHealthLow()
     {
-        if (value < 10)
+        if (_healthPoint < 10)
         {
             return true;
         }
 
         return false;
+    }
+
+    public bool IsDead()
+    {
+        return _healthPoint <= 0;
     }
 }

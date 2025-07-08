@@ -7,8 +7,10 @@ public class Player : Character
     [SerializeField] private Vector2 _mousePosition;
     [SerializeField] private Vector3 _worldPositionOfMouse;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         _moveDirection.x = Input.GetAxisRaw("Horizontal");
         _moveDirection.y = Input.GetAxisRaw("Vertical");
 
@@ -21,6 +23,16 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            health.Heal(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            health.Damage(10);
         }
     }
 

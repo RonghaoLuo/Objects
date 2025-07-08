@@ -3,6 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour, IDespawnable
 {
     private int _despawnTime = 5;
+    private Health _playerHealth;
 
     public void Despawn(float time)
     {
@@ -13,6 +14,7 @@ public class Projectile : MonoBehaviour, IDespawnable
     void Start()
     {
         Despawn(_despawnTime);
+        _playerHealth = FindAnyObjectByType<Player>().health;
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Projectile : MonoBehaviour, IDespawnable
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _playerHealth.Damage(1);
             Destroy(gameObject);
         }
     }
