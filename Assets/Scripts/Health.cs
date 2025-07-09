@@ -17,11 +17,13 @@ public class Health
     public void Damage(int toDamage)
     {
         value -= toDamage;
+        DisplayHealth();
     }
 
     public void Heal(int toHeal)
     {
         value += toHeal;
+        DisplayHealth();
     }
 
     public bool IsHealthLow()

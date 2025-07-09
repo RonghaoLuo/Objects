@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: -4.51, y: -0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3899100801299418138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7399251090995969026
@@ -102,9 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5137f99f6fc12424c8c6d34e539192fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  maxHealth: 100
+  moveSpeed: 30
   myRigidbody: {fileID: 3973525445512640795}
   sprite: {fileID: 7399251090995969026}
+  bulletPrefab: {fileID: 577992219108574147, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
+  shootOrigin: {fileID: 3899100801299418138}
+  _bulletSpeed: 20
 --- !u!50 &3973525445512640795
 Rigidbody2D:
   serializedVersion: 5
@@ -182,3 +187,34 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
+--- !u!1 &7609737781008486053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3899100801299418138}
+  m_Layer: 0
+  m_Name: Weapon Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3899100801299418138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7609737781008486053}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3063195772009793526}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField] private Rigidbody2D bulletPrefab;
+    [SerializeField] private Transform shootOrigin;
+    [SerializeField] private float _bulletSpeed;
+
     private Vector2 _moveDirection;
+    private Vector2 _lookDirection;
     
-    [SerializeField] private Vector2 _mousePosition;
-    [SerializeField] private Vector3 _worldPositionOfMouse;
+    private Vector2 _mousePosition;
+    private Vector2 _worldPositionOfMouse;
 
     private void Update()
     {
@@ -13,20 +18,16 @@ public class Player : Character
         _moveDirection.y = Input.GetAxisRaw("Vertical");
 
         _mousePosition = Input.mousePosition;
-
         _worldPositionOfMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        _worldPositionOfMouse.z = 0;
+        _lookDirection = _worldPositionOfMouse - myRigidbody.position;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        Move(_moveDirection * Time.fixedDeltaTime, _lookDirection);
+
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Move(_moveDirection);
     }
 
     protected override void Start()
@@ -52,5 +53,11 @@ public class Player : Character
         {
             pickableFeature.PickUp();
         }
+    }
+
+    public override void Attack()
+    {
+        base.Attack();
+        Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation).linearVelocity = shootOrigin.up * _bulletSpeed;
     }
 }

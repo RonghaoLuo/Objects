@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6cd29b2881f164c8bef47cbaf8b6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   moveSpeed: 0
   myRigidbody: {fileID: 0}
   sprite: {fileID: 1726099518}
