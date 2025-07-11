@@ -107,7 +107,7 @@ MonoBehaviour:
   moveSpeed: 30
   myRigidbody: {fileID: 3973525445512640795}
   sprite: {fileID: 7399251090995969026}
-  bulletPrefab: {fileID: 577992219108574147, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
+  bulletPrefab: {fileID: 6860604331482621228, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
   shootOrigin: {fileID: 3899100801299418138}
   _bulletSpeed: 20
 --- !u!50 &3973525445512640795
@@ -199,7 +199,7 @@ GameObject:
   m_Layer: 0
   m_Name: Weapon Tip
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

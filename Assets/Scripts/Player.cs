@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private Rigidbody2D bulletPrefab;
+    [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shootOrigin;
     [SerializeField] private float _bulletSpeed;
 
@@ -11,6 +11,7 @@ public class Player : Character
     
     private Vector2 _mousePosition;
     private Vector2 _worldPositionOfMouse;
+    private WeaponData currentWeapon;
 
     private void Update()
     {
@@ -32,6 +33,7 @@ public class Player : Character
 
     protected override void Start()
     {
+        currentWeapon = new WeaponData(bulletPrefab, shootOrigin);
         ChangeSpriteColor(Color.blue);
     }
 
@@ -58,6 +60,6 @@ public class Player : Character
     public override void Attack()
     {
         base.Attack();
-        Instantiate(bulletPrefab, shootOrigin.position, shootOrigin.rotation).linearVelocity = shootOrigin.up * _bulletSpeed;
+        currentWeapon.ShootWeapon();
     }
 }
