@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    private ScoreManager scoreManager;
+
     private void Awake()
     {
         if (Instance != null)
@@ -21,17 +23,35 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        scoreManager = FindAnyObjectByType<ScoreManager>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        FindAnyObjectByType<Player>().health.OnHealthZero += EndGame;
         StartCoroutine(SpawnEnemiesCoroutine());
+    }
+
+    void EndGame()
+    {
+        Debug.LogWarning("Game Over");
+        scoreManager.RegisterHighestScore();
     }
 
     void SpawnSingleEnemy()
     {
-        allSpawnedEnemies.Add(Instantiate(enemyPrefab));
+        Enemy clonedEnemy = Instantiate(enemyPrefab);
+        allSpawnedEnemies.Add(clonedEnemy);
+        clonedEnemy.health.OnHealthZero += 
+            (() => 
+            {
+                scoreManager.AddScore(10);
+                allSpawnedEnemies.Remove(clonedEnemy);
+                Debug.Log(clonedEnemy.name + " got killed");
+                Destroy(clonedEnemy.gameObject); 
+            });
     }
 
     IEnumerator SpawnEnemiesCoroutine()

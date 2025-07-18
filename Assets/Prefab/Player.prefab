@@ -108,8 +108,9 @@ MonoBehaviour:
   myRigidbody: {fileID: 3973525445512640795}
   sprite: {fileID: 7399251090995969026}
   bulletPrefab: {fileID: 6860604331482621228, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
-  shootOrigin: {fileID: 3899100801299418138}
+  _weaponTip: {fileID: 3899100801299418138}
   _bulletSpeed: 20
+  currentWeapon: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
 --- !u!50 &3973525445512640795
 Rigidbody2D:
   serializedVersion: 5

@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Health
 {
     private int value;
+    public Action OnHealthZero;
 
     public Health(int initialHealth = 100)
     {
@@ -17,6 +19,10 @@ public class Health
     public void Damage(int toDamage)
     {
         value -= toDamage;
+        if (value <= 0)
+        {
+            OnHealthZero?.Invoke();     // question mark: won't invoke if no listener
+        }
         DisplayHealth();
     }
 
@@ -34,5 +40,10 @@ public class Health
         }
 
         return false;
+    }
+
+    public int GetHealth()
+    {
+        return value;
     }
 }
