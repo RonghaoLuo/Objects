@@ -5,14 +5,13 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private List<Enemy> allSpawnedEnemies = new List<Enemy>();
-
-    [SerializeField] private UnityEvent OnGameStart;
-
+    [SerializeField] private int _maxNumOfEnemy;
+    [SerializeField] private List<Enemy> _allSpawnedEnemies = new List<Enemy>();
+    
     public static GameManager Instance;
 
-    private ScoreManager scoreManager;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private UnityEvent OnGameStart;
 
     private void Awake()
     {
@@ -23,8 +22,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        scoreManager = FindAnyObjectByType<ScoreManager>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,18 +34,18 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         Debug.LogWarning("Game Over");
-        scoreManager.RegisterHighestScore();
+        ScoreManager.Instance.RegisterHighestScore();
     }
 
     void SpawnSingleEnemy()
     {
-        Enemy clonedEnemy = Instantiate(enemyPrefab);
-        allSpawnedEnemies.Add(clonedEnemy);
+        Enemy clonedEnemy = Instantiate(_enemyPrefab);
+        _allSpawnedEnemies.Add(clonedEnemy);
         clonedEnemy.health.OnHealthZero += 
             (() => 
             {
-                scoreManager.AddScore(10);
-                allSpawnedEnemies.Remove(clonedEnemy);
+                ScoreManager.Instance.AddScore(10);
+                _allSpawnedEnemies.Remove(clonedEnemy);
                 Debug.Log(clonedEnemy.name + " got killed");
                 Destroy(clonedEnemy.gameObject); 
             });
@@ -56,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnEnemiesCoroutine()
     {
-        while (allSpawnedEnemies.Count < 15)
+        while (_allSpawnedEnemies.Count < _maxNumOfEnemy)
         {
             SpawnSingleEnemy();
             yield return new WaitForSeconds(Random.Range(2, 3f));

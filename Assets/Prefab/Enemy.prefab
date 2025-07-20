@@ -102,10 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b041d475717520c4d8cf64337b643062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  moveSpeed: 1
-  myRigidbody: {fileID: 549965134199170021}
-  sprite: {fileID: 8684850507409117538}
+  _maxHealth: 100
+  _moveSpeed: 1
+  _myRigidbody: {fileID: 549965134199170021}
+  _sprite: {fileID: 8684850507409117538}
   distanceToAttack: 3
 --- !u!58 &7417257066375177617
 CircleCollider2D:

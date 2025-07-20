@@ -103,14 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5137f99f6fc12424c8c6d34e539192fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  moveSpeed: 30
-  myRigidbody: {fileID: 3973525445512640795}
-  sprite: {fileID: 7399251090995969026}
-  bulletPrefab: {fileID: 6860604331482621228, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
-  _weaponTip: {fileID: 3899100801299418138}
-  _bulletSpeed: 20
+  _maxHealth: 100
+  _moveSpeed: 10
+  _myRigidbody: {fileID: 3973525445512640795}
+  _sprite: {fileID: 7399251090995969026}
   currentWeapon: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
+  _weaponTip: {fileID: 3899100801299418138}
 --- !u!50 &3973525445512640795
 Rigidbody2D:
   serializedVersion: 5
@@ -213,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 7609737781008486053}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1, z: 0}
+  m_LocalPosition: {x: -0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

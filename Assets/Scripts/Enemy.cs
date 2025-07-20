@@ -6,11 +6,6 @@ public class Enemy : Character
 
     private Player player;
 
-    public override void Attack()
-    {
-        Debug.Log("Pow Pow");
-    }
-
     protected override void Start()
     {
         ChangeSpriteColor(Color.red);
@@ -31,5 +26,10 @@ public class Enemy : Character
                 Attack();
             }
         }
+    }
+
+    public override void Attack()
+    {
+        //Debug.Log("Enemy Attack");
     }
 }

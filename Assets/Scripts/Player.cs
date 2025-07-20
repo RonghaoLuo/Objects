@@ -4,29 +4,26 @@ using System;
 public class Player : Character
 {
     public Action OnPlayerDie;
-
-    [SerializeField] private Bullet bulletPrefab;
-    [SerializeField] private Transform _weaponTip;
-    [SerializeField] private float _bulletSpeed;
+    public WeaponData currentWeapon;
 
     private Vector2 _moveDirection;
     private Vector2 _lookDirection;
-    
-    private Vector2 _mousePosition;
     private Vector2 _worldPositionOfMouse;
-    public WeaponData currentWeapon;
+
+    [SerializeField] private Transform _weaponTip;
+
+    protected override void Start()
+    {
+        //currentWeapon = new WeaponData(bulletPrefab, shootOrigin);
+        ChangeSpriteColor(Color.blue);
+    }
 
     private void Update()
     {
         _moveDirection.x = Input.GetAxisRaw("Horizontal");
         _moveDirection.y = Input.GetAxisRaw("Vertical");
-
-        _mousePosition = Input.mousePosition;
         _worldPositionOfMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        _lookDirection = _worldPositionOfMouse - myRigidbody.position;
-
-        Move(_moveDirection * Time.fixedDeltaTime, _lookDirection);
+        _lookDirection = _worldPositionOfMouse - _myRigidbody.position;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,10 +31,9 @@ public class Player : Character
         }
     }
 
-    protected override void Start()
+    private void FixedUpdate()
     {
-        //currentWeapon = new WeaponData(bulletPrefab, shootOrigin);
-        ChangeSpriteColor(Color.blue);
+        Move(_moveDirection, _lookDirection);
     }
 
     protected override void Explode()
@@ -63,15 +59,10 @@ public class Player : Character
 
     public override void Attack()
     {
-        base.Attack();
-        if (currentWeapon != null)
+        if (currentWeapon == null)
         {
-            currentWeapon.ShootWeapon(_weaponTip);
+            return;
         }
-        else
-        {
-
-        }
-        
+        currentWeapon.ShootWeapon(_weaponTip);
     }
 }

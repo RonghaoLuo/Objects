@@ -2,32 +2,38 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private int currentScore;
-    [SerializeField] private int highestScore;
+    [SerializeField] private int _currentScore;
+    [SerializeField] private int _highestScore;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static ScoreManager Instance;
+
+    private void Awake()
     {
-        highestScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (Instance != null)
+        {
+            Debug.LogError("There's another Score Manager as Instance");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        _highestScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     public void AddScore(int toAdd)
     {
-        currentScore += toAdd;
+        _currentScore += toAdd;
     }
 
     public void RegisterHighestScore()
     {
-        if (currentScore > highestScore)
+        if (_currentScore > _highestScore)
         {
-            highestScore = currentScore;
-            PlayerPrefs.SetInt("HighScore", highestScore);
+            _highestScore = _currentScore;
+            PlayerPrefs.SetInt("HighScore", _highestScore);
         }
     }
 }

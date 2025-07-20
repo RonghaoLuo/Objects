@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Laser
   m_EditorClassIdentifier: 
   weaponName: Laser
-  damage: 20
-  bulletReference: {fileID: 6860604331482621228, guid: e9ba8ddb4cee2cd469caf4f48fe6b295, type: 3}
-  bulletSpeed: 100
+  damage: 50
+  bulletSpeed: 30
+  _bulletReference: {fileID: 6860604331482621228, guid: e9ba8ddb4cee2cd469caf4f48fe6b295, type: 3}

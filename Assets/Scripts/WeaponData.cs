@@ -5,13 +5,15 @@ public class WeaponData : ScriptableObject
 {
     public string weaponName;
     public int damage;
-    public Bullet bulletReference;
-    //[SerializeField] private Transform shootOrigin;
     public float bulletSpeed;
+
+    [SerializeField] private Bullet _bulletReference;
+
+    //[SerializeField] private Transform shootOrigin;
 
     public void ShootWeapon(Transform weaponTip)
     {
-        Bullet clonedBullet = GameObject.Instantiate(bulletReference, weaponTip.position, weaponTip.rotation);
+        Bullet clonedBullet = Instantiate(_bulletReference, weaponTip.position, weaponTip.rotation);
         clonedBullet.speed = bulletSpeed;
         clonedBullet.damage = damage;
     }
