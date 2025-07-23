@@ -2,16 +2,19 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _maxNumOfEnemy;
     [SerializeField] private List<Enemy> _allSpawnedEnemies = new List<Enemy>();
+    [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
     
     public static GameManager Instance;
 
+    public Action OnGameStart, OnGameEnd;
+
     [SerializeField] private Enemy _enemyPrefab;
-    [SerializeField] private UnityEvent OnGameStart;
 
     private void Awake()
     {
@@ -34,31 +37,40 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         Debug.LogWarning("Game Over");
+        OnGameEnd?.Invoke();
         ScoreManager.Instance.RegisterHighestScore();
     }
 
     void SpawnSingleEnemy()
     {
         Enemy clonedEnemy = Instantiate(_enemyPrefab);
+        Transform randomSpawnPoint = 
+            allSpawnPoints[UnityEngine.Random.Range(0, allSpawnPoints.Count)];
         _allSpawnedEnemies.Add(clonedEnemy);
+        clonedEnemy.transform.position = randomSpawnPoint.position;
+
         clonedEnemy.health.OnHealthZero += 
             (() => 
             {
                 ScoreManager.Instance.AddScore(10);
                 _allSpawnedEnemies.Remove(clonedEnemy);
-                Debug.Log(clonedEnemy.name + " got killed");
                 Destroy(clonedEnemy.gameObject); 
             });
     }
 
     IEnumerator SpawnEnemiesCoroutine()
     {
-        while (_allSpawnedEnemies.Count < _maxNumOfEnemy)
-        {
-            SpawnSingleEnemy();
-            yield return new WaitForSeconds(Random.Range(2, 3f));
-        }
+        //OnGameStart?.Invoke();
 
-        OnGameStart.Invoke();
+        while (true)
+        {
+            if (_allSpawnedEnemies.Count < _maxNumOfEnemy)
+            {
+                SpawnSingleEnemy();
+                yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3f));
+            }
+            
+            yield return null;                          // so doesn't stuck in the while true
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int _highestScore;
 
     public static ScoreManager Instance;
+
+    public Action<int> OnScoreChange;
 
     private void Awake()
     {
@@ -21,11 +24,13 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         _highestScore = PlayerPrefs.GetInt("HighScore", 0);
+        GameManager.Instance.OnGameEnd += RegisterHighestScore;     //???
     }
 
     public void AddScore(int toAdd)
     {
         _currentScore += toAdd;
+        OnScoreChange?.Invoke(_currentScore);
     }
 
     public void RegisterHighestScore()

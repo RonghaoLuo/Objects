@@ -29,6 +29,10 @@ public class Player : Character
         {
             Attack();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            health.Damage(10);
+        }
     }
 
     private void FixedUpdate()

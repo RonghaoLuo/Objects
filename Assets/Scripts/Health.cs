@@ -5,6 +5,7 @@ public class Health
 {
     private int value;
     public Action OnHealthZero;
+    public Action<int> OnHealthChange;
 
     public Health(int initialHealth = 100)
     {
@@ -19,6 +20,9 @@ public class Health
     public void Damage(int toDamage)
     {
         value -= toDamage;
+
+        OnHealthChange?.Invoke(value);
+
         if (value <= 0)
         {
             OnHealthZero?.Invoke();     // question mark: won't invoke if no listener
@@ -29,7 +33,7 @@ public class Health
     public void Heal(int toHeal)
     {
         value += toHeal;
-        DisplayHealth();
+        OnHealthChange?.Invoke(value);
     }
 
     public bool IsHealthLow()
