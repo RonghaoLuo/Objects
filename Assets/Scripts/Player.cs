@@ -33,11 +33,13 @@ public class Player : Character
         {
             health.Damage(10);
         }
+
+        ChangeSpriteColor(Color.Lerp(Color.red, Color.green, (float)health.GetHealth() / _maxHealth));
     }
 
     private void FixedUpdate()
     {
-        Move(_moveDirection, _lookDirection);
+        Move(_moveDirection.normalized, _lookDirection);
     }
 
     protected override void Explode()

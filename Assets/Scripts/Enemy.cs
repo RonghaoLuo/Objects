@@ -19,7 +19,7 @@ public class Enemy : Character
             Vector2 direction = player.transform.position - transform.position;
             if (Vector2.Distance(transform.position, player.transform.position) > distanceToAttack)
             {
-                Move(direction, direction);
+                Move(direction.normalized, direction);
             }
             else
             {

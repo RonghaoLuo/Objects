@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _moveSpeed: 1
+  _moveSpeed: 5
   _myRigidbody: {fileID: 549965134199170021}
   _sprite: {fileID: 8684850507409117538}
   distanceToAttack: 3
