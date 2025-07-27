@@ -18,8 +18,10 @@ public class Player : Character
         ChangeSpriteColor(Color.blue);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         _moveDirection.x = Input.GetAxisRaw("Horizontal");
         _moveDirection.y = Input.GetAxisRaw("Vertical");
         _worldPositionOfMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
