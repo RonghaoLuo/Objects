@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected SpriteRenderer _sprite;
 
     // reserved time to do stuff before the game starts
-    private void Awake()
+    protected virtual void Awake()
     {
         health = new Health(_maxHealth);
     }
@@ -20,6 +20,11 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         ChangeSpriteColor(Random.value, Random.value, Random.value);
+    }
+
+    protected virtual void Update()
+    {
+
     }
 
     public virtual void Attack()

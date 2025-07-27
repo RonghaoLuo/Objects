@@ -4,7 +4,7 @@ public class Enemy : Character
 {
     [SerializeField] protected float distanceToAttack;
 
-    private Player player;
+    protected Player player;
 
     protected override void Start()
     {
@@ -12,7 +12,7 @@ public class Enemy : Character
         player = FindAnyObjectByType<Player>();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (player != null)
         {
