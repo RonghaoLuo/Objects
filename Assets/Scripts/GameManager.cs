@@ -7,7 +7,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _maxNumOfEnemy;
-    [SerializeField] private HashSet<Enemy> _allManagerSpawnedEnemies = new HashSet<Enemy>();
+    [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
     
     public static GameManager Instance;

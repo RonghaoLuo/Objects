@@ -40,7 +40,7 @@ public class ExplosiveEnemy : Enemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Explode();
+            health.Damage(health.GetHealth());
         }
     }
 
