@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Enemy : Character
 {
+    [SerializeField] protected int score;
     [SerializeField] protected float distanceToAttack;
 
     protected Player player;
@@ -10,6 +12,12 @@ public class Enemy : Character
     {
         ChangeSpriteColor(Color.red);
         player = FindAnyObjectByType<Player>();
+
+        health.OnHealthZero +=
+            (() =>
+            {
+                Invoke("Explode", 0.1f);
+            });
     }
 
     protected virtual void FixedUpdate()
@@ -31,5 +39,12 @@ public class Enemy : Character
     public override void Attack()
     {
         //Debug.Log("Enemy Attack");
+    }
+
+    protected override void Explode()
+    {
+        base.Explode();
+        ScoreManager.Instance.AddScore(score);
+        Destroy(gameObject);
     }
 }

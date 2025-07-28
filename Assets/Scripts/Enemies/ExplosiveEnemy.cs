@@ -12,11 +12,16 @@ public class ExplosiveEnemy : Enemy
 
     protected override void Start()
     {
-        base.Start();
-        _areaOfExplosion.localScale = new Vector2 (_explosionRadius, _explosionRadius);
+        ChangeSpriteColor(Color.red);
+        player = FindAnyObjectByType<Player>();
 
-        // Explosion on Death
-        health.OnHealthZero += Explode;
+        health.OnHealthZero +=
+            (() =>
+            {
+                Invoke("Explode", 0.1f);
+            });
+
+        _areaOfExplosion.localScale = new Vector2 (_explosionRadius, _explosionRadius);
     }
 
     protected override void FixedUpdate()
@@ -31,11 +36,6 @@ public class ExplosiveEnemy : Enemy
         Move(direction.normalized, direction);
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -46,11 +46,10 @@ public class ExplosiveEnemy : Enemy
 
     protected override void Explode()
     {
-        base.Explode();
         foreach (Character character in charactersInRangeOfExplosion)
         {
             character.health.Damage(_explosionDamage);
         }
-        Destroy(gameObject);
+        base.Explode();
     }
 }

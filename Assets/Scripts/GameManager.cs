@@ -7,7 +7,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _maxNumOfEnemy;
-    [SerializeField] private List<Enemy> _allSpawnedEnemies = new List<Enemy>();
+    [SerializeField] private HashSet<Enemy> _allManagerSpawnedEnemies = new HashSet<Enemy>();
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
     
     public static GameManager Instance;
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FindAnyObjectByType<Player>().health.OnHealthZero += EndGame;
+        
         StartCoroutine(SpawnEnemiesCoroutine());
     }
 
@@ -46,15 +47,13 @@ public class GameManager : MonoBehaviour
         Enemy clonedEnemy = Instantiate(_enemyPrefab);
         Transform randomSpawnPoint = 
             allSpawnPoints[UnityEngine.Random.Range(0, allSpawnPoints.Count)];
-        _allSpawnedEnemies.Add(clonedEnemy);
+        _allManagerSpawnedEnemies.Add(clonedEnemy);
         clonedEnemy.transform.position = randomSpawnPoint.position;
 
         clonedEnemy.health.OnHealthZero += 
             (() => 
             {
-                ScoreManager.Instance.AddScore(10);
-                _allSpawnedEnemies.Remove(clonedEnemy);
-                Destroy(clonedEnemy.gameObject); 
+                _allManagerSpawnedEnemies.Remove(clonedEnemy);
             });
     }
 
@@ -64,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
-            if (_allSpawnedEnemies.Count < _maxNumOfEnemy)
+            if (_allManagerSpawnedEnemies.Count < _maxNumOfEnemy)
             {
                 SpawnSingleEnemy();
                 yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3f));

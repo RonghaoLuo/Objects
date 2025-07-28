@@ -187,6 +187,7 @@ MonoBehaviour:
   _moveSpeed: 5
   _myRigidbody: {fileID: 4905985053172017822}
   _sprite: {fileID: 9014502862559627911}
+  score: 20
   distanceToAttack: 0
   _explosionDamage: 50
   _explosionRadius: 5

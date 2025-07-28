@@ -106,6 +106,7 @@ MonoBehaviour:
   _moveSpeed: 5
   _myRigidbody: {fileID: 549965134199170021}
   _sprite: {fileID: 8684850507409117538}
+  score: 10
   distanceToAttack: 3
 --- !u!58 &7417257066375177617
 CircleCollider2D:
