@@ -25,7 +25,7 @@ public class Player : Character
         _moveDirection.x = Input.GetAxisRaw("Horizontal");
         _moveDirection.y = Input.GetAxisRaw("Vertical");
         _worldPositionOfMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        _lookDirection = _worldPositionOfMouse - _myRigidbody.position;
+        _lookDirection = _worldPositionOfMouse - myRigidbody.position;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -46,9 +46,9 @@ public class Player : Character
 
     protected override void Explode()
     {
-        base.Explode();
         Debug.Log("Game Over");
         OnPlayerDie.Invoke();
+        base.Explode();
     }
 
     public void PickUp()
@@ -67,6 +67,10 @@ public class Player : Character
 
     public override void Attack()
     {
+        CharacterAudio.volume = currentWeapon.fireAudioVolume;
+        CharacterAudio.pitch = currentWeapon.fireAudioPitch;
+        CharacterAudio.PlayOneShot(currentWeapon.fireAudio);
+        base.Attack();
         if (currentWeapon == null)
         {
             return;

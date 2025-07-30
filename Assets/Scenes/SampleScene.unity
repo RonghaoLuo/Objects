@@ -1275,8 +1275,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _moveSpeed: 0
-  _myRigidbody: {fileID: 0}
-  _sprite: {fileID: 1726099518}
+  myRigidbody: {fileID: 0}
+  sprite: {fileID: 1726099518}
+  destroyEffect: {fileID: 0}
+  CharacterAudio: {fileID: 0}
 --- !u!212 &1726099518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1524,7 +1526,7 @@ MonoBehaviour:
   - {fileID: 683469123}
   - {fileID: 1416365985}
   - {fileID: 1337183279}
-  _enemyPrefab: {fileID: 6104601957174487563, guid: 05a0ccf3dd891c44c99ac8ce119a1a6f, type: 3}
+  _enemyPrefab: {fileID: 337551561420556199, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
 --- !u!4 &2052164244
 Transform:
   m_ObjectHideFlags: 0
@@ -1606,7 +1608,7 @@ PrefabInstance:
     - target: {fileID: 3297635716542319759, guid: ea25b1b3586fcb846a7d48155bc936bb, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: a7b1ef35ae18d9e4781ff3c3c4b46324, type: 2}
+      objectReference: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
     - target: {fileID: 5431958106819490817, guid: ea25b1b3586fcb846a7d48155bc936bb, type: 3}
       propertyPath: m_Name
       value: Player

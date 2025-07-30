@@ -43,8 +43,7 @@ public class Enemy : Character
 
     protected override void Explode()
     {
-        base.Explode();
         ScoreManager.Instance.AddScore(score);
-        Destroy(gameObject);
+        base.Explode();
     }
 }

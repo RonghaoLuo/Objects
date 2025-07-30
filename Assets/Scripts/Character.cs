@@ -7,8 +7,10 @@ public class Character : MonoBehaviour
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected float _moveSpeed;
 
-    [SerializeField] protected Rigidbody2D _myRigidbody;
-    [SerializeField] protected SpriteRenderer _sprite;
+    [SerializeField] protected Rigidbody2D myRigidbody;
+    [SerializeField] protected SpriteRenderer sprite;
+    [SerializeField] protected GameObject destroyEffect;
+    [SerializeField] protected AudioSource CharacterAudio;
 
     // reserved time to do stuff before the game starts
     protected virtual void Awake()
@@ -29,17 +31,21 @@ public class Character : MonoBehaviour
 
     public virtual void Attack()
     {
-        Debug.Log("Character Attack");
+        
     }
 
     protected virtual void Explode()
     {
-
+        if (destroyEffect)
+        {
+            Instantiate(destroyEffect,transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
     protected void ChangeSpriteColor(Color newColor)
     {
-        _sprite.color = newColor;
+        sprite.color = newColor;
     }
 
     protected void ChangeSpriteColor(float red, float green, float blue)
@@ -50,7 +56,7 @@ public class Character : MonoBehaviour
 
     public virtual void Move(Vector2 direction)
     {
-        _myRigidbody.AddForce(direction * _moveSpeed);
+        myRigidbody.AddForce(direction * _moveSpeed);
     }
 
     public virtual void Move(Vector2 directionToMove, Vector2 directionToLook)

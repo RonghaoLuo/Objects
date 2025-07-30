@@ -6,6 +6,9 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     public int damage;
     public float bulletSpeed;
+    public AudioClip fireAudio;
+    public float fireAudioVolume;
+    public float fireAudioPitch;
 
     [SerializeField] private Bullet _bulletReference;
 
