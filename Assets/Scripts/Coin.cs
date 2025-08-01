@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour, IPickable
 
     public void PickUp()
     {
-        // Add to a score manager
+        ScoreManager.Instance.AddScore(scoreToAdd);
         Destroy(gameObject);
     }
 

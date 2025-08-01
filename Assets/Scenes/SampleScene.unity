@@ -1528,7 +1528,6 @@ MonoBehaviour:
   - {fileID: 1416365985}
   - {fileID: 1337183279}
   _enemyPrefab: {fileID: 337551561420556199, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
-  _spawnerManager: {fileID: 2052164246}
 --- !u!4 &2052164244
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,14 +1570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c218800743332409e6e4090f30430f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpRates:
-  - item: {fileID: 3716031433222519042, guid: 5d560631a5d00174f875bb248a7002f3, type: 3}
-    spawnRate: 0.4
-  - item: {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
-    spawnRate: 0.8
   powerUps:
   - {fileID: 3716031433222519042, guid: 5d560631a5d00174f875bb248a7002f3, type: 3}
-  chanceOfSpawn: 0.7
+  - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
+  chanceOfSpawn: 1
 --- !u!1001 &1283118935054733572
 PrefabInstance:
   m_ObjectHideFlags: 0

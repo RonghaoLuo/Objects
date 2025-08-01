@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public Action OnGameStart, OnGameEnd;
 
     [SerializeField] private Enemy _enemyPrefab;
-    [SerializeField] private ItemSpawnerManager _spawnerManager;
 
     private void Awake()
     {
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
             (() => 
             {
                 _allManagerSpawnedEnemies.Remove(clonedEnemy);
-                _spawnerManager.TrySpawnItem(clonedEnemy.transform.position, clonedEnemy.transform.rotation);
+                ItemSpawnerManager.Instance.TrySpawnItem(clonedEnemy.transform.position, clonedEnemy.transform.rotation);
             });
     }
 

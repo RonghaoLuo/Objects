@@ -3,25 +3,30 @@ using UnityEngine;
 
 public class ItemSpawnerManager : MonoBehaviour
 {
-    [SerializeField] private ItemDrop[] powerUpRates;
+    //[SerializeField] private ItemDrop[] powerUpRates;
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private float chanceOfSpawn;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static ItemSpawnerManager Instance;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (Instance != null)
+        {
+            Debug.LogError("There's another Item Spawner Manager as Instance");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     public void TrySpawnItem(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        if (Random.value < chanceOfSpawn)       // chance?
+        if (powerUps.Length < 1)
+        {
+            return;
+        }
+        if (Random.value <= chanceOfSpawn)
         {
             GameObject randomObject = powerUps[Random.Range(0, powerUps.Length)];
             Instantiate(randomObject, spawnPosition, spawnRotation);
