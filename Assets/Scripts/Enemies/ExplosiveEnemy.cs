@@ -12,15 +12,7 @@ public class ExplosiveEnemy : Enemy
 
     protected override void Start()
     {
-        ChangeSpriteColor(Color.red);
-        player = FindAnyObjectByType<Player>();
-
-        health.OnHealthZero +=
-            (() =>
-            {
-                Invoke("Explode", 0.1f);
-            });
-
+        base.Start();
         _areaOfExplosion.localScale = new Vector2 (_explosionRadius, _explosionRadius);
     }
 

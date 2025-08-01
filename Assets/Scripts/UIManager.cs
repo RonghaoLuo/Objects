@@ -5,6 +5,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _healthText;
+    [SerializeField] private TextMeshProUGUI _numOfEnemiesText;
 
     Player _playerReference;
 
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     {
         _healthText.text = "100%";
         _scoreText.text = "0";
+        _numOfEnemiesText.text = "0";
 
         _playerReference = FindAnyObjectByType<Player>();
     }
@@ -20,6 +22,7 @@ public class UIManager : MonoBehaviour
     {
         _playerReference.health.OnHealthChange += UpdateHealthText;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
+        Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
     }
 
     private void UpdateHealthText(int updatedHealthValue)
@@ -30,5 +33,10 @@ public class UIManager : MonoBehaviour
     private void UpdateScoreText(int updatedScoreValue)
     {
         _scoreText.text = updatedScoreValue.ToString();
+    }
+
+    private void UpdateNumOfEnemiesText(int numOfSpawnedEnemies)
+    {
+        _numOfEnemiesText.text = $"Enemies: {numOfSpawnedEnemies}";
     }
 }

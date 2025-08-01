@@ -47,13 +47,11 @@ public class GameManager : MonoBehaviour
         Enemy clonedEnemy = Instantiate(_enemyPrefab);
         Transform randomSpawnPoint = 
             allSpawnPoints[UnityEngine.Random.Range(0, allSpawnPoints.Count)];
-        _allManagerSpawnedEnemies.Add(clonedEnemy);
         clonedEnemy.transform.position = randomSpawnPoint.position;
 
         clonedEnemy.health.OnHealthZero += 
             (() => 
             {
-                _allManagerSpawnedEnemies.Remove(clonedEnemy);
                 ItemSpawnerManager.Instance.TrySpawnItem(clonedEnemy.transform.position, clonedEnemy.transform.rotation);
             });
     }
@@ -64,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
-            if (_allManagerSpawnedEnemies.Count < _maxNumOfEnemy)
+            if (Enemy.allSpawnedEnemies.Count < _maxNumOfEnemy)
             {
                 SpawnSingleEnemy();
                 yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3f));

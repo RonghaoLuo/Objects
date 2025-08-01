@@ -39,8 +39,8 @@ public class Character : MonoBehaviour
         if (destroyEffect)
         {
             Instantiate(destroyEffect,transform.position, transform.rotation);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 
     protected void ChangeSpriteColor(Color newColor)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : Character
@@ -8,15 +9,22 @@ public class Enemy : Character
 
     protected Player player;
 
+    public static List<Enemy> allSpawnedEnemies = new List<Enemy>();
+    public static Action<int> OnAllSpawnedEnemiesChange;
+
     protected override void Start()
     {
+        allSpawnedEnemies.Add(this);
         ChangeSpriteColor(Color.red);
         player = FindAnyObjectByType<Player>();
+        OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
 
         health.OnHealthZero +=
             (() =>
             {
-                Invoke("Explode", 0.1f);
+                allSpawnedEnemies.Remove(this);
+                OnAllSpawnedEnemiesChange.Invoke(allSpawnedEnemies.Count);
+                Explode();
             });
     }
 
