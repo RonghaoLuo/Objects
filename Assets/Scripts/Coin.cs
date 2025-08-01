@@ -3,6 +3,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour, IPickable
 {
     public int scoreToAdd;
+    public float lifeSpan;
 
     public void PickUp()
     {
@@ -15,6 +16,7 @@ public class Coin : MonoBehaviour, IPickable
     {
         
     }
+
 
     // Update is called once per frame
     void Update()
