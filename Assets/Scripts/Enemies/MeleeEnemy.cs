@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
+    [SerializeField] private float _attackCooldown = 1f;
+    [SerializeField] private int _attactDamage;
+
+    private float _nextAttackTime = 0f;
+
     protected override void FixedUpdate()
     {
         // movements
@@ -14,16 +19,25 @@ public class MeleeEnemy : Enemy
         Move(direction.normalized, direction);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Attack();
+            TryAttack(player);
         }
     }
 
-    public override void Attack()
+    public void TryAttack(Character target)
     {
-        Explode();
+        if (Time.time > _nextAttackTime)
+        {
+            Attack(target);
+            _nextAttackTime = Time.time + _attackCooldown;
+        }
+    }
+
+    private void Attack(Character target)
+    {
+        target.health.Damage(_attactDamage);
     }
 }
