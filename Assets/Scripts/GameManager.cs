@@ -7,6 +7,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _maxNumOfEnemy;
+    [SerializeField] private float _spawnCooldown = 1f;
     [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
     
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
             if (Enemy.allSpawnedEnemies.Count < _maxNumOfEnemy)
             {
                 SpawnSingleEnemy();
-                yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3f));
+                yield return new WaitForSeconds(_spawnCooldown);
             }
             
             yield return null;                          // so doesn't stuck in the while true

@@ -195,6 +195,7 @@ MonoBehaviour:
   _explosionRadius: 5
   _areaOfExplosion: {fileID: 6297852498335894850}
   charactersInRangeOfExplosion: []
+  isExploded: 0
 --- !u!1 &8402051105154967110
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class ExplosiveEnemy : Enemy
     [SerializeField] protected Transform _areaOfExplosion;
 
     public List<Character> charactersInRangeOfExplosion;
+    public bool isExploded = false;
 
     protected override void Start()
     {
@@ -38,8 +39,21 @@ public class ExplosiveEnemy : Enemy
 
     protected override void Explode()
     {
-        foreach (Character character in charactersInRangeOfExplosion)
+        // safety checks
+        if (isExploded)
         {
+            return;
+        }
+        isExploded = true;
+
+        // prevent modification of List during it's iteration; shallow copy
+        List<Character> targets = new List<Character>(charactersInRangeOfExplosion);
+        foreach (Character character in targets)
+        {
+            if (character == null)
+            {
+                continue;
+            }
             character.health.Damage(_explosionDamage);
         }
         base.Explode();
