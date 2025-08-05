@@ -5,7 +5,9 @@ using UnityEngine;
 public class Enemy : Character
 {
     [SerializeField] protected int score;
-    [SerializeField] protected float distanceToAttack;
+    [SerializeField] protected float _attackCooldown = 1f;
+    [SerializeField] protected int _attackDamage;
+    protected float _nextAttackTime = 0f;
 
     protected Player player;
 
@@ -18,30 +20,18 @@ public class Enemy : Character
         ChangeSpriteColor(Color.red);
         player = FindAnyObjectByType<Player>();
         OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
-
-        health.OnHealthZero +=
-            (() =>
-            {
-                allSpawnedEnemies.Remove(this);
-                OnAllSpawnedEnemiesChange.Invoke(allSpawnedEnemies.Count);
-                Explode();
-            });
+        health.OnHealthZero += DoOnHealthZero;
     }
 
     protected virtual void FixedUpdate()
     {
-        if (player != null)
+        if (!player)
         {
-            Vector2 direction = player.transform.position - transform.position;
-            if (Vector2.Distance(transform.position, player.transform.position) > distanceToAttack)
-            {
-                Move(direction.normalized, direction);
-            }
-            else
-            {
-                Attack();
-            }
+            return;
         }
+
+        Vector2 direction = player.transform.position - transform.position;
+        Move(direction.normalized, direction);
     }
 
     public override void Attack()
@@ -51,7 +41,15 @@ public class Enemy : Character
 
     protected override void Explode()
     {
+        health.OnHealthZero -= DoOnHealthZero;
         ScoreManager.Instance.AddScore(score);
         base.Explode();
+    }
+
+    protected virtual void DoOnHealthZero()
+    {
+        allSpawnedEnemies.Remove(this);
+        OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
+        Explode();
     }
 }

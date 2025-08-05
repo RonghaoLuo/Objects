@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6427948024521713965}
+  - component: {fileID: 6104601957174487563}
   - component: {fileID: 9014502862559627911}
   - component: {fileID: 5302528344580572785}
   - component: {fileID: 4905985053172017822}
-  - component: {fileID: 6104601957174487563}
   m_Layer: 0
   m_Name: Explosive Enemy
   m_TagString: Untagged
@@ -36,6 +36,32 @@ Transform:
   - {fileID: 6297852498335894850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6104601957174487563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171294087295274446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f0f0e4853aae946ad0c51d3cdd8d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _moveSpeed: 5
+  myRigidbody: {fileID: 4905985053172017822}
+  sprite: {fileID: 9014502862559627911}
+  destroyEffect: {fileID: 0}
+  CharacterAudio: {fileID: 0}
+  score: 20
+  _attackCooldown: 0
+  _attackDamage: 0
+  _explosionDamage: 100
+  _explosionRadius: 5
+  _areaOfExplosion: {fileID: 6297852498335894850}
+  charactersInRangeOfExplosion: []
+  isExploded: 0
 --- !u!212 &9014502862559627911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -171,31 +197,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6104601957174487563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2171294087295274446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f0f0e4853aae946ad0c51d3cdd8d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _moveSpeed: 5
-  myRigidbody: {fileID: 4905985053172017822}
-  sprite: {fileID: 9014502862559627911}
-  destroyEffect: {fileID: 0}
-  CharacterAudio: {fileID: 0}
-  score: 20
-  distanceToAttack: 0
-  _explosionDamage: 50
-  _explosionRadius: 5
-  _areaOfExplosion: {fileID: 6297852498335894850}
-  charactersInRangeOfExplosion: []
-  isExploded: 0
 --- !u!1 &8402051105154967110
 GameObject:
   m_ObjectHideFlags: 0

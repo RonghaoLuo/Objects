@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6183308770456929082}
-  - component: {fileID: 8684850507409117538}
   - component: {fileID: 337551561420556199}
+  - component: {fileID: 8684850507409117538}
   - component: {fileID: 7417257066375177617}
   - component: {fileID: 549965134199170021}
   m_Layer: 0
@@ -35,6 +35,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337551561420556199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919303933304265054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b041d475717520c4d8cf64337b643062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _moveSpeed: 5
+  myRigidbody: {fileID: 549965134199170021}
+  sprite: {fileID: 8684850507409117538}
+  destroyEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
+  CharacterAudio: {fileID: 0}
+  score: 10
+  _attackCooldown: 0
+  _attackDamage: 0
 --- !u!212 &8684850507409117538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90,26 +111,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &337551561420556199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3919303933304265054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b041d475717520c4d8cf64337b643062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _moveSpeed: 5
-  myRigidbody: {fileID: 549965134199170021}
-  sprite: {fileID: 8684850507409117538}
-  destroyEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
-  CharacterAudio: {fileID: 0}
-  score: 10
-  distanceToAttack: 3
 --- !u!58 &7417257066375177617
 CircleCollider2D:
   m_ObjectHideFlags: 0

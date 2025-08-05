@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveEnemy : Enemy
+public class ExplosiveEnemy : CollisionEnemy
 {
     [SerializeField] protected int _explosionDamage;
     [SerializeField] protected float _explosionRadius;
@@ -15,18 +15,6 @@ public class ExplosiveEnemy : Enemy
     {
         base.Start();
         _areaOfExplosion.localScale = new Vector2 (_explosionRadius, _explosionRadius);
-    }
-
-    protected override void FixedUpdate()
-    {
-        // movements
-        if (!player)
-        {
-            return;
-        }
-
-        Vector2 direction = player.transform.position - transform.position;
-        Move(direction.normalized, direction);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

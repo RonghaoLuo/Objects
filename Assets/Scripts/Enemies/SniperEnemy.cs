@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SniperEnemy : Enemy
+public class SniperEnemy : RangeEnemy
 {
     public override void Attack()
     {
