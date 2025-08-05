@@ -50,4 +50,9 @@ public class Health
     {
         return value;
     }
+
+    public void Kill()
+    {
+        Damage(GetHealth());
+    }
 }

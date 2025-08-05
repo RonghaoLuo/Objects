@@ -51,11 +51,6 @@ public class Player : Character
         base.Explode();
     }
 
-    public void PickUp()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IPickable pickableFeature = collision.gameObject.GetComponent<IPickable>();
