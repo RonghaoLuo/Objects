@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9bb3e582200db2a4fa582444ec8e6d0c
+guid: d91c7ebbc5755ce4686f2c785b3eae3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1467534325454771679
-    second: Nuclear_symbol.svg_0
+      213: 3422100629892873381
+    second: meteor_detailedLarge_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nuclear_symbol.svg_0
+      name: meteor_detailedLarge_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 14
-        width: 1172
-        height: 1172
+        x: 15
+        y: 15
+        width: 98
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd59c6491babd5410800000000000000
-      internalID: 1467534325454771679
+      spriteID: 5acb76e446ebd7f20800000000000000
+      internalID: 3422100629892873381
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Nuclear_symbol.svg_0: 1467534325454771679
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

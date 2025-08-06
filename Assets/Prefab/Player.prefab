@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _moveSpeed: 10
+  _rotateSpeed: 1
   myRigidbody: {fileID: 3973525445512640795}
   sprite: {fileID: 7399251090995969026}
   destroyEffect: {fileID: 0}
@@ -268,7 +269,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8725527008048901535
 PolygonCollider2D:
   m_ObjectHideFlags: 0

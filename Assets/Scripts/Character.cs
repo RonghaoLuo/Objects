@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected float _moveSpeed;
+    [SerializeField] protected float _rotateSpeed;
 
     [SerializeField] protected Rigidbody2D myRigidbody;
     [SerializeField] protected SpriteRenderer sprite;
@@ -62,6 +63,6 @@ public class Character : MonoBehaviour
     public virtual void Move(Vector2 directionToMove, Vector2 directionToLook)
     {
         Move(directionToMove);
-        transform.up = directionToLook;
+        transform.up = Vector2.Lerp(transform.up, directionToLook, Time.fixedDeltaTime * _rotateSpeed);
     }
 }
