@@ -6,6 +6,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Player : Character
 {
     public Action OnPlayerDie, OnNukeChange;
+    public Action<float> OnStartFullAuto;
     public WeaponData currentWeapon;
     public int numOfNukes = 0;
 
@@ -13,13 +14,26 @@ public class Player : Character
     private Vector2 _lookDirection;
     private Vector2 _worldPositionOfMouse;
     //private PlayerInventory _myInventory;
+    private bool isOnFullAuto = false;
+    private float _fullAutoDuration;
+    private float _nextAttackTime = 0f;
 
     [SerializeField] private Transform _weaponTip;
+    [SerializeField] private float _currentAttackCooldown;
+    [SerializeField] private float _semiAutoAttackCooldown;
+    [SerializeField] private float _fullAutoAttackCooldown;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        OnStartFullAuto += StartFullAuto;
+    }
 
     protected override void Start()
     {
         //currentWeapon = new WeaponData(bulletPrefab, shootOrigin);
         ChangeSpriteColor(Color.blue);
+        _currentAttackCooldown = _semiAutoAttackCooldown;
     }
 
     protected override void Update()
@@ -31,14 +45,18 @@ public class Player : Character
         _worldPositionOfMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _lookDirection = _worldPositionOfMouse - myRigidbody.position;
 
-        if (Input.GetMouseButtonDown(0))
+        if (!isOnFullAuto && Input.GetMouseButtonDown(0))
         {
-            Attack();
+            TryAttack();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (isOnFullAuto && Input.GetMouseButton(0))
         {
-            health.Damage(10);
+            TryAttack();
         }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    health.Damage(10);
+        //}
         if (Input.GetMouseButtonDown(1))
         {
             UseNuke();
@@ -67,6 +85,14 @@ public class Player : Character
             pickableFeature.PickUp();
         }
     }
+    public void TryAttack()
+    {
+        if (Time.time > _nextAttackTime)
+        {
+            Attack();
+            _nextAttackTime = Time.time + _currentAttackCooldown;
+        }
+    }
 
     public override void Attack()
     {
@@ -93,5 +119,20 @@ public class Player : Character
             if (target == null) continue;
             target.health.Kill();
         }
+    }
+
+    private void StartFullAuto(float duration)
+    {
+        // enable the children object for UI
+        isOnFullAuto = true;
+        _currentAttackCooldown = _fullAutoAttackCooldown;
+        // need proper timer for stopfullauto
+    }
+
+    private void StopFullAuto()
+    {
+        isOnFullAuto = false;
+        _currentAttackCooldown = _semiAutoAttackCooldown;
+        // disable the children object for UI
     }
 }
