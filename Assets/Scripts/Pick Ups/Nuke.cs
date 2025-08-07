@@ -3,26 +3,20 @@ using System.Collections.Generic;
 
 public class Nuke : PowerUp
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Player _player;
+
+    private void Awake()
     {
-        
+        _player = FindAnyObjectByType<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void PickUp()
     {
-        
-    }
-
-    protected override void ActivatePowerUp()
-    {
-        base.ActivatePowerUp();
-        List<Enemy> targets = new List<Enemy>(Enemy.allSpawnedEnemies);
-        foreach (Enemy target in targets)
+        if (_player.numOfNukes < 3)
         {
-            if (target == null) continue;
-            target.health.Kill();
+            _player.numOfNukes++;
+            _player.OnNukeChange?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

@@ -1,14 +1,18 @@
-using UnityEngine;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Character
 {
-    public Action OnPlayerDie;
+    public Action OnPlayerDie, OnNukeChange;
     public WeaponData currentWeapon;
+    public int numOfNukes = 0;
 
     private Vector2 _moveDirection;
     private Vector2 _lookDirection;
     private Vector2 _worldPositionOfMouse;
+    //private PlayerInventory _myInventory;
 
     [SerializeField] private Transform _weaponTip;
 
@@ -34,6 +38,10 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Space))
         {
             health.Damage(10);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            UseNuke();
         }
 
         ChangeSpriteColor(Color.Lerp(Color.red, Color.green, (float)health.GetHealth() / _maxHealth));
@@ -71,5 +79,19 @@ public class Player : Character
             return;
         }
         currentWeapon.ShootWeapon(_weaponTip);
+    }
+
+    private void UseNuke()
+    {
+        if (numOfNukes < 1) return;
+
+        numOfNukes--;
+        OnNukeChange?.Invoke();
+        List<Enemy> targets = new List<Enemy>(Enemy.allSpawnedEnemies);
+        foreach (Enemy target in targets)
+        {
+            if (target == null) continue;
+            target.health.Kill();
+        }
     }
 }

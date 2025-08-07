@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour, IPickable
 {
-    public void PickUp()
+    public virtual void PickUp()
     {
         ActivatePowerUp();
 
