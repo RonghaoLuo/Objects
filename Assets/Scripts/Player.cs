@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Character
 {
@@ -15,10 +15,12 @@ public class Player : Character
     private Vector2 _worldPositionOfMouse;
     //private PlayerInventory _myInventory;
     private bool isOnFullAuto = false;
-    private float _fullAutoDuration;
     private float _nextAttackTime = 0f;
+    private Coroutine activeFullAutoCoroutine;
 
     [SerializeField] private Transform _weaponTip;
+    [SerializeField] private UIFullAuto _fullAutoUI;
+
     [SerializeField] private float _currentAttackCooldown;
     [SerializeField] private float _semiAutoAttackCooldown;
     [SerializeField] private float _fullAutoAttackCooldown;
@@ -123,16 +125,23 @@ public class Player : Character
 
     private void StartFullAuto(float duration)
     {
-        // enable the children object for UI
-        isOnFullAuto = true;
-        _currentAttackCooldown = _fullAutoAttackCooldown;
-        // need proper timer for stopfullauto
+        if (activeFullAutoCoroutine != null)
+        {
+            StopCoroutine(activeFullAutoCoroutine);
+        }
+
+        activeFullAutoCoroutine = StartCoroutine(StartFullAutoCoroutine(duration));
     }
 
-    private void StopFullAuto()
+    private IEnumerator StartFullAutoCoroutine(float duration)
     {
+        isOnFullAuto = true;
+        _currentAttackCooldown = _fullAutoAttackCooldown;
+        _fullAutoUI.StartCountdown(duration); // enable the children object for UI
+
+        yield return new WaitForSeconds(duration);
+
         isOnFullAuto = false;
         _currentAttackCooldown = _semiAutoAttackCooldown;
-        // disable the children object for UI
     }
 }
