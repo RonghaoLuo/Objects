@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9014502862559627911}
   - component: {fileID: 5302528344580572785}
   - component: {fileID: 4905985053172017822}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Explosive Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _moveSpeed: 5
+  _rotateSpeed: 0.7
   myRigidbody: {fileID: 4905985053172017822}
   sprite: {fileID: 9014502862559627911}
   destroyEffect: {fileID: 0}
@@ -209,7 +210,7 @@ GameObject:
   - component: {fileID: 8576980642625176643}
   - component: {fileID: 4298780278745980427}
   - component: {fileID: 288134038699400851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Area of Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

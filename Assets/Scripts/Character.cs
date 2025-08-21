@@ -63,6 +63,11 @@ public class Character : MonoBehaviour
     public virtual void Move(Vector2 directionToMove, Vector2 directionToLook)
     {
         Move(directionToMove);
-        transform.up = Vector2.Lerp(transform.up, directionToLook, Time.fixedDeltaTime * _rotateSpeed);
+        LookAt(directionToLook);
+    }
+
+    public virtual void LookAt(Vector2 direction)
+    {
+        transform.up = Vector2.Lerp(transform.up, direction, Time.fixedDeltaTime * _rotateSpeed);
     }
 }

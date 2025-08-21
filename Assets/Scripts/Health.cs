@@ -4,12 +4,19 @@ using UnityEngine;
 public class Health
 {
     private int value;
+    private int maxValue;
     public Action OnHealthZero;
     public Action<int> OnHealthChange;
 
     public Health(int initialHealth = 100)
     {
         value = initialHealth;
+        maxValue = value;
+    }
+    public Health(int initialHealth, int maxHealth)
+    {
+        value = initialHealth;
+        maxValue = maxHealth;
     }
 
     public void DisplayHealth()
@@ -21,18 +28,22 @@ public class Health
     {
         value -= toDamage;
 
-        OnHealthChange?.Invoke(value);
-
         if (value <= 0)
         {
+            value = 0;
             OnHealthZero?.Invoke();     // question mark: won't invoke if no listener
         }
+        OnHealthChange?.Invoke(value);
         DisplayHealth();
     }
 
     public void Heal(int toHeal)
     {
         value += toHeal;
+        if (value > maxValue)
+        {
+            value = maxValue;
+        }
         OnHealthChange?.Invoke(value);
     }
 

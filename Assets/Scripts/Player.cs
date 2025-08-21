@@ -98,15 +98,17 @@ public class Player : Character
 
     public override void Attack()
     {
-        CharacterAudio.volume = currentWeapon.fireAudioVolume;
-        CharacterAudio.pitch = currentWeapon.fireAudioPitch;
-        CharacterAudio.PlayOneShot(currentWeapon.fireAudio);
-        base.Attack();
-        if (currentWeapon == null)
+        if (CharacterAudio != null)
         {
-            return;
+            CharacterAudio.volume = currentWeapon.fireAudioVolume;
+            CharacterAudio.pitch = currentWeapon.fireAudioPitch;
+            CharacterAudio.PlayOneShot(currentWeapon.fireAudio);
         }
-        currentWeapon.ShootWeapon(_weaponTip);
+        base.Attack();
+        if (currentWeapon != null)
+        {
+            currentWeapon.ShootWeapon(_weaponTip);
+        }
     }
 
     private void UseNuke()
