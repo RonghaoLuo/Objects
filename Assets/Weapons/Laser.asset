@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Laser
   m_EditorClassIdentifier: 
   weaponName: Laser
+  targetType: Enemy
   damage: 50
   bulletSpeed: 30
+  fireAudio: {fileID: 0}
+  fireAudioVolume: 0
+  fireAudioPitch: 0
   _bulletReference: {fileID: 6860604331482621228, guid: e9ba8ddb4cee2cd469caf4f48fe6b295, type: 3}

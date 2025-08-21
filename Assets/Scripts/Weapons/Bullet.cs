@@ -8,7 +8,12 @@ public class Bullet : MonoBehaviour
     //public WeaponData weaponOrigin;
     public float speed;
     public int damage;
-    public string targetType;
+    public int LayerIndex;
+
+    private void Awake()
+    {
+        gameObject.layer = LayerIndex;
+    }
 
     void Start()
     {
@@ -19,7 +24,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Character target = collision.gameObject.GetComponent<Character>();
-        if (target && target.gameObject.CompareTag(targetType))  // unity auto converts to bool
+        if (target)  // unity auto converts to bool
         {
             target.health.Damage(damage);
             Destroy(gameObject);

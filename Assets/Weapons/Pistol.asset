@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
+  targetType: Enemy
   damage: 10
   bulletSpeed: 10
   fireAudio: {fileID: 8300000, guid: 52f0eb934ff654344b305c7243d9d085, type: 3}

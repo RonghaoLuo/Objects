@@ -56,7 +56,7 @@ public class RangeEnemy : Enemy
         
         if (currentWeapon != null)
         {
-            currentWeapon.ShootWeapon(weaponTip);
+            currentWeapon.ShootWeapon(weaponTip, 7);
         }
     }
 }
