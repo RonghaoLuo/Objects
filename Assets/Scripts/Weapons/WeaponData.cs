@@ -17,9 +17,7 @@ public class WeaponData : ScriptableObject
     public void ShootWeapon(Transform weaponTip, int LayerIndex)
     {
         Bullet clonedBullet = Instantiate(_bulletReference, weaponTip.position, weaponTip.rotation);
-        clonedBullet.speed = bulletSpeed;
-        clonedBullet.damage = damage;
-        clonedBullet.LayerIndex = LayerIndex;
+        clonedBullet.Initialize(weaponTip, LayerIndex, bulletSpeed, damage);
     }
 
     //public WeaponData(Bullet bullet, Transform weaponTip, float bulletSpeed = 20)

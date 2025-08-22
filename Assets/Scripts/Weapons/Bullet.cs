@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private int damage;
+    [SerializeField] private float speed;
+    [SerializeField] private int LayerIndex;
+
     [SerializeField] private Rigidbody2D _myRigidbody;
     [SerializeField] private GameObject _destroyEffect;
-    
-    //public WeaponData weaponOrigin;
-    public float speed;
-    public int damage;
-    public int LayerIndex;
-
-    private void Awake()
+    public void Initialize(Transform weaponTip, int LayerIndex, float speed, int damage)
     {
+        this.LayerIndex = LayerIndex;
+        this.speed = speed;
+        this.damage = damage;
+
         gameObject.layer = LayerIndex;
     }
 
     void Start()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2.5f);
         _myRigidbody.linearVelocity = transform.up * speed;
     }
 
