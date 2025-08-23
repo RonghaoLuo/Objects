@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _numOfEnemiesText;
     [SerializeField] private GameObject[] _nukeIcons;
 
-    Player _playerReference;
+    Player player;
 
     void Awake()
     {
@@ -16,20 +16,20 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "0";
         _numOfEnemiesText.text = "0";
 
-        _playerReference = FindAnyObjectByType<Player>();
+        player = FindAnyObjectByType<Player>();
     }
 
     private void Start()
     {
-        _playerReference.health.OnHealthChange += UpdateHealthText;
+        player.health.OnHealthChange += UpdateHealthText;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
-        _playerReference.OnNukeChange += UpdateNuke;
+        player.OnNukeChange += UpdateNuke;
     }
 
-    private void UpdateHealthText(int updatedHealthValue)
+    private void UpdateHealthText()
     {
-        _healthText.text = updatedHealthValue.ToString() + "%";
+        _healthText.text = player.health.GetHealth().ToString() + "%";
     }
 
     private void UpdateScoreText(int updatedScoreValue)
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateNuke()
     {
-        int numOfNukes = _playerReference.numOfNukes;
+        int numOfNukes = player.numOfNukes;
         for (int i = 0; i < _nukeIcons.Length; i++)
         {
             if (i < numOfNukes)

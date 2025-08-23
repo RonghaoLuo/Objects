@@ -6,7 +6,7 @@ public class Health
     private int value;
     private int maxValue;
     public Action OnHealthZero;
-    public Action<int> OnHealthChange;
+    public Action OnHealthChange;
 
     public Health(int initialHealth = 100)
     {
@@ -33,7 +33,7 @@ public class Health
             value = 0;
             OnHealthZero?.Invoke();     // question mark: won't invoke if no listener
         }
-        OnHealthChange?.Invoke(value);
+        OnHealthChange?.Invoke();
         DisplayHealth();
     }
 
@@ -44,7 +44,7 @@ public class Health
         {
             value = maxValue;
         }
-        OnHealthChange?.Invoke(value);
+        OnHealthChange?.Invoke();
     }
 
     public bool IsHealthLow()
@@ -65,5 +65,10 @@ public class Health
     public void Kill()
     {
         Damage(GetHealth());
+    }
+
+    public float GetHealthInFraction()
+    {
+        return (float) GetHealth() / maxValue;
     }
 }

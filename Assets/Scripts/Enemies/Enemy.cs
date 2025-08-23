@@ -17,7 +17,7 @@ public class Enemy : Character
     protected override void Start()
     {
         allSpawnedEnemies.Add(this);
-        ChangeSpriteColor(Color.red);
+        ChangeSpriteColor(Color.orange);
         player = FindAnyObjectByType<Player>();
         OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
         health.OnHealthZero += DoOnHealthZero;

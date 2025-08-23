@@ -64,7 +64,7 @@ public class Player : Character
             UseNuke();
         }
 
-        ChangeSpriteColor(Color.Lerp(Color.red, Color.green, (float)health.GetHealth() / _maxHealth));
+        ChangeSpriteColor(Color.Lerp(Color.red, Color.green, health.GetHealthInFraction()));
     }
 
     private void FixedUpdate()
