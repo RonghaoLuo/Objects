@@ -12369,7 +12369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxNumOfEnemy: 2
-  _spawnCooldown: 0
+  _spawnCooldown: 1
   _allManagerSpawnedEnemies: []
   allSpawnPoints:
   - {fileID: 377966332}
@@ -12380,7 +12380,7 @@ MonoBehaviour:
   - {fileID: 683469123}
   - {fileID: 1416365985}
   - {fileID: 1337183279}
-  _enemyPrefab: {fileID: 8468641757427587095, guid: db3e5c10fff3fd148bd6087cf040fa8f, type: 3}
+  _enemyPrefab: {fileID: 6905838643129140031, guid: 19d4033d0c1dd804e87c635f7c976b2e, type: 3}
 --- !u!4 &2052164244
 Transform:
   m_ObjectHideFlags: 0

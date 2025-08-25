@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8497564862066459808
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2030785889228296257, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: -5045199026050070982}
+    - target: {fileID: 3919303933304265054, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_Name
+      value: EnemyCollisionVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684850507409117538, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+    m_RemovedComponents:
+    - {fileID: 337551561420556199, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3919303933304265054, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: -5045199026050070982}
+  m_SourcePrefab: {fileID: 100100000, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+--- !u!212 &967046581409666498 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8684850507409117538, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+  m_PrefabInstance: {fileID: 8497564862066459808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4866491314716564990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3919303933304265054, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+  m_PrefabInstance: {fileID: 8497564862066459808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5045199026050070982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866491314716564990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3549a38588853428c158716e258a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _moveSpeed: 5
+  _rotateSpeed: 0.7
+  myRigidbody: {fileID: 8236156110711203653}
+  sprite: {fileID: 967046581409666498}
+  destroyEffect: {fileID: 0}
+  CharacterAudio: {fileID: 0}
+  score: 10
+  _attackCooldown: 1
+  _attackDamage: 10
+--- !u!50 &8236156110711203653 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 549965134199170021, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+  m_PrefabInstance: {fileID: 8497564862066459808}
+  m_PrefabAsset: {fileID: 0}
