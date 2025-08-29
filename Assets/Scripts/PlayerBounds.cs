@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class PlayerBounds : MonoBehaviour
 {
-    [SerializeField] RectTransform minBounds, maxBounds;
+    private RectTransform minBounds, maxBounds;
+
+    private void Awake()
+    {
+        minBounds = GameManager.Singleton.playerMinBounds;
+        maxBounds = GameManager.Singleton.playerMaxBounds;
+    }
 
     void LateUpdate()
     {

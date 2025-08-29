@@ -29,6 +29,7 @@ public class Player : Character
     {
         base.Awake();
         OnStartFullAuto += StartFullAuto;
+        health.OnHealthZero += Explode;
     }
 
     protected override void Start()
@@ -75,7 +76,7 @@ public class Player : Character
     protected override void Explode()
     {
         Debug.Log("Game Over");
-        OnPlayerDie.Invoke();
+        //OnPlayerDie.Invoke();
         base.Explode();
     }
 

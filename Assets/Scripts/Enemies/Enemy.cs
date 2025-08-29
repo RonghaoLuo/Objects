@@ -14,13 +14,24 @@ public class Enemy : Character
     public static List<Enemy> allSpawnedEnemies = new List<Enemy>();
     public static Action<int> OnAllSpawnedEnemiesChange;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        GameManager.Singleton.OnPlayerSpawn += SetPlayerReference;
+        GameManager.Singleton.OnGameEnd += RemovePlayerReference;
+        health.OnHealthZero += DoOnHealthZero;
+    }
+
     protected override void Start()
     {
         allSpawnedEnemies.Add(this);
         ChangeSpriteColor(Color.orange);
-        player = FindAnyObjectByType<Player>();
         OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
-        health.OnHealthZero += DoOnHealthZero;
+        
+        if (player == null)
+        {
+            player = GameManager.Singleton.GetPlayerReference();
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -42,6 +53,8 @@ public class Enemy : Character
     protected override void Explode()
     {
         health.OnHealthZero -= DoOnHealthZero;
+        GameManager.Singleton.OnPlayerSpawn -= SetPlayerReference;
+        GameManager.Singleton.OnGameEnd -= RemovePlayerReference;
         ScoreManager.Instance.AddScore(score);
         base.Explode();
     }
@@ -51,5 +64,15 @@ public class Enemy : Character
         allSpawnedEnemies.Remove(this);
         OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
         Explode();
+    }
+
+    protected void SetPlayerReference(Player player)
+    {
+        this.player = player;
+    }
+
+    protected void RemovePlayerReference()
+    {
+        player = null;
     }
 }

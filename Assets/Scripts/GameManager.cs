@@ -6,70 +6,63 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int _maxNumOfEnemy;
-    [SerializeField] private float _spawnCooldown = 1f;
-    [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
-    [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
+    [SerializeField] private GameObject startMenu;
+    [SerializeField] private GameObject endMenu;
+    [SerializeField] private GameObject playerUI;
+    [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private Player playerPrefab;
     
-    public static GameManager Instance;
+    private Player player;
+    
+    public static GameManager Singleton;
 
     public Action OnGameStart, OnGameEnd;
-
-    [SerializeField] private Enemy _enemyPrefab;
+    public Action<Player> OnPlayerSpawn;
+    public RectTransform playerMinBounds;
+    public RectTransform playerMaxBounds;
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Singleton != null)
         {
             Debug.LogError("There's another Game Manager as Instance");
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        Singleton = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartGame()
     {
-        FindAnyObjectByType<Player>().health.OnHealthZero += EndGame;
-        
-        StartCoroutine(SpawnEnemiesCoroutine());
+        player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        OnGameStart?.Invoke();  // useless for now
+        OnPlayerSpawn?.Invoke(player);
+        player.health.OnHealthZero += EndGame;
+
+        startMenu.SetActive(false);
+        playerUI.SetActive(true);
+        enemyManager.StartSpawnEnemiesCoroutine();
     }
 
     void EndGame()
     {
-        Debug.LogWarning("Game Over");
-        OnGameEnd?.Invoke();
+        OnGameEnd?.Invoke();    // useless for now
+
         ScoreManager.Instance.RegisterHighestScore();
+
+        enemyManager.StopSpawnEnemiesCoroutine();
+        playerUI.SetActive(false);
+        endMenu.SetActive(true);
     }
 
-    void SpawnSingleEnemy()
+    public void StartMenu()
     {
-        Enemy clonedEnemy = Instantiate(_enemyPrefab);
-        Transform randomSpawnPoint = 
-            allSpawnPoints[UnityEngine.Random.Range(0, allSpawnPoints.Count)];
-        clonedEnemy.transform.position = randomSpawnPoint.position;
-
-        clonedEnemy.health.OnHealthZero += 
-            (() => 
-            {
-                ItemSpawnerManager.Instance.TrySpawnItem(clonedEnemy.transform.position, clonedEnemy.transform.rotation);
-            });
+        endMenu.SetActive(false);
+        startMenu.SetActive(true);
     }
 
-    IEnumerator SpawnEnemiesCoroutine()
+    public Player GetPlayerReference()
     {
-        //OnGameStart?.Invoke();
-
-        while (true)
-        {
-            if (Enemy.allSpawnedEnemies.Count < _maxNumOfEnemy)
-            {
-                SpawnSingleEnemy();
-                yield return new WaitForSeconds(_spawnCooldown);
-            }
-            
-            yield return null;                          // so doesn't stuck in the while true
-        }
+        return player;
     }
 }

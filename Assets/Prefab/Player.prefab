@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4951015976438429654}
   - component: {fileID: 8300862263172547975}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6950719379817450524}
   - component: {fileID: 3973525445512640795}
   - component: {fileID: 8725527008048901535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -243,13 +243,13 @@ MonoBehaviour:
   sprite: {fileID: 7399251090995969026}
   destroyEffect: {fileID: 0}
   CharacterAudio: {fileID: 8300862263172547975}
-  currentWeapon: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
+  currentWeapon: {fileID: 11400000, guid: a7b1ef35ae18d9e4781ff3c3c4b46324, type: 2}
   numOfNukes: 0
   _weaponTip: {fileID: 3899100801299418138}
   _fullAutoUI: {fileID: 3759450669431804673}
   _currentAttackCooldown: 0
-  _semiAutoAttackCooldown: 0
-  _fullAutoAttackCooldown: 0
+  _semiAutoAttackCooldown: 0.2
+  _fullAutoAttackCooldown: 0.05
 --- !u!114 &6950719379817450524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68eb09598efa15e4a82b71793f205683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minBounds: {fileID: 0}
-  maxBounds: {fileID: 0}
 --- !u!50 &3973525445512640795
 Rigidbody2D:
   serializedVersion: 5
@@ -353,7 +351,7 @@ GameObject:
   - component: {fileID: 5440244798293644077}
   - component: {fileID: 1019631072285251973}
   - component: {fileID: 8017535808338729064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PowerUpUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3899100801299418138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon Tip
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -486,7 +484,7 @@ GameObject:
   - component: {fileID: 7960536883843645567}
   - component: {fileID: 6482203725750415522}
   - component: {fileID: 3759450669431804673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FullAutoCountDownUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3432787480579931476}
   - component: {fileID: 193082978833021201}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

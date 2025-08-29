@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         _highestScore = PlayerPrefs.GetInt("HighScore", 0);
-        GameManager.Instance.OnGameEnd += RegisterHighestScore;     //???
+        GameManager.Singleton.OnGameEnd += RegisterHighestScore;     //???
     }
 
     public void AddScore(int toAdd)
