@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Singleton;
 
-    public Action OnGameStart, OnGameEnd;
+    public Action OnGameEnd;
     public Action<Player> OnPlayerSpawn;
     public RectTransform playerMinBounds;
     public RectTransform playerMaxBounds;
@@ -34,13 +34,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        startMenu.SetActive(false);
+        playerUI.SetActive(true);
+
         player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        OnGameStart?.Invoke();  // useless for now
         OnPlayerSpawn?.Invoke(player);
         player.health.OnHealthZero += EndGame;
 
-        startMenu.SetActive(false);
-        playerUI.SetActive(true);
+        
         enemyManager.StartSpawnEnemiesCoroutine();
     }
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         ScoreManager.Instance.RegisterHighestScore();
 
         enemyManager.StopSpawnEnemiesCoroutine();
+
         playerUI.SetActive(false);
         endMenu.SetActive(true);
     }

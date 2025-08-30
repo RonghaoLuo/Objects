@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public Action OnPlayerDie, OnNukeChange;
+    public Action OnNukeChange;
     public Action<float> OnStartFullAuto;
     public WeaponData currentWeapon;
     public int numOfNukes = 0;
@@ -76,7 +76,6 @@ public class Player : Character
     protected override void Explode()
     {
         Debug.Log("Game Over");
-        //OnPlayerDie.Invoke();
         base.Explode();
     }
 
