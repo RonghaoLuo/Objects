@@ -6,10 +6,14 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float _followSpeed;
     private Player _player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        _player = FindAnyObjectByType<Player>();
+        GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
     }
 
     // Update is called once per frame
@@ -21,5 +25,10 @@ public class CameraFollow : MonoBehaviour
             destination.z = 0;
             transform.position = destination + _offset;
         }
+    }
+
+    private void SetPlayerReference(Player player)
+    {
+        _player = player;
     }
 }

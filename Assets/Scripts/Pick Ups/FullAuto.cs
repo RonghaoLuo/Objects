@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FullAuto : PowerUp
 {
-    private Player _player;
     [SerializeField] private float _fullAutoDuration;
 
     private void Awake()

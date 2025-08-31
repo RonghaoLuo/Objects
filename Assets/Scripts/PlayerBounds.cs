@@ -6,8 +6,8 @@ public class PlayerBounds : MonoBehaviour
 
     private void Awake()
     {
-        minBounds = GameManager.Singleton.playerMinBounds;
-        maxBounds = GameManager.Singleton.playerMaxBounds;
+        minBounds = GameManager.Instance.playerMinBounds;
+        maxBounds = GameManager.Instance.playerMaxBounds;
     }
 
     void LateUpdate()

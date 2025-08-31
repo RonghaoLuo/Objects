@@ -17,9 +17,18 @@ public class Enemy : Character
     protected override void Awake()
     {
         base.Awake();
-        GameManager.Singleton.OnPlayerSpawn += SetPlayerReference;
-        GameManager.Singleton.OnGameEnd += RemovePlayerReference;
+        GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
+        GameManager.Instance.OnGameEnd += RemovePlayerReference;
         health.OnHealthZero += DoOnHealthZero;
+        health.OnHealthZero += TrySpawnItem;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
+        GameManager.Instance.OnGameEnd -= RemovePlayerReference;
+        health.OnHealthZero -= DoOnHealthZero;
+        health.OnHealthZero -= TrySpawnItem;
     }
 
     protected override void Start()
@@ -30,7 +39,7 @@ public class Enemy : Character
         
         if (player == null)
         {
-            player = GameManager.Singleton.GetPlayerReference();
+            player = GameManager.Instance.GetPlayerReference();
         }
     }
 
@@ -52,9 +61,6 @@ public class Enemy : Character
 
     protected override void Explode()
     {
-        health.OnHealthZero -= DoOnHealthZero;
-        GameManager.Singleton.OnPlayerSpawn -= SetPlayerReference;
-        GameManager.Singleton.OnGameEnd -= RemovePlayerReference;
         ScoreManager.Instance.AddScore(score);
         base.Explode();
     }
@@ -74,5 +80,10 @@ public class Enemy : Character
     protected void RemovePlayerReference()
     {
         player = null;
+    }
+
+    private void TrySpawnItem()
+    {
+        ItemSpawnerManager.Instance.TrySpawnItem(transform.position, transform.rotation);
     }
 }

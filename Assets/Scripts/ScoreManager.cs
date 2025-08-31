@@ -19,12 +19,13 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        GameManager.Instance.OnGameEnd += RegisterHighestScore;
     }
 
     void Start()
     {
         _highestScore = PlayerPrefs.GetInt("HighScore", 0);
-        GameManager.Singleton.OnGameEnd += RegisterHighestScore;     //???
     }
 
     public void AddScore(int toAdd)

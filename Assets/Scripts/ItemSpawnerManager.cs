@@ -1,10 +1,10 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpawnerManager : MonoBehaviour
 {
     //[SerializeField] private ItemDrop[] powerUpRates;
-    [SerializeField] private GameObject[] powerUps;
+    [SerializeField] private GameObject[] powerUpPrefabs;
     [SerializeField] private float chanceOfSpawn;
 
     public static ItemSpawnerManager Instance;
@@ -22,13 +22,13 @@ public class ItemSpawnerManager : MonoBehaviour
 
     public void TrySpawnItem(Vector3 spawnPosition, Quaternion spawnRotation)
     {
-        if (powerUps.Length < 1)
+        if (powerUpPrefabs.Length < 1)
         {
             return;
         }
         if (Random.value <= chanceOfSpawn)
         {
-            GameObject randomObject = powerUps[Random.Range(0, powerUps.Length)];
+            GameObject randomObject = powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];
             Instantiate(randomObject, spawnPosition, spawnRotation);
         }
         // can do weighted chance

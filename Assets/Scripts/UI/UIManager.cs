@@ -12,21 +12,23 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        healthText.text = "100%";
-        scoreText.text = "0";
-        numOfEnemiesText.text = "0";
-
-        //player = FindAnyObjectByType<Player>();
-        GameManager.Singleton.OnPlayerSpawn += SetPlayerReference;
-        //GameManager.Singleton.OnGameEnd += RemovePlayerReference;
+        healthText.text = "N/A";
+        scoreText.text = "N/A";
+        numOfEnemiesText.text = "N/A";
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        //player.health.OnHealthChange += UpdateHealthText;
+        GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
-        //player.OnNukeChange += UpdateNuke;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
+        ScoreManager.Instance.OnScoreChange -= UpdateScoreText;
+        Enemy.OnAllSpawnedEnemiesChange -= UpdateNumOfEnemiesText;
     }
 
     private void UpdateHealthText()
@@ -68,6 +70,10 @@ public class UIManager : MonoBehaviour
 
     private void RemovePlayerReference()
     {
+        player.health.OnHealthChange -= UpdateHealthText;
+        player.OnNukeChange -= UpdateNuke;
+        player.health.OnHealthZero -= RemovePlayerReference;
+
         player = null;
 
         ResetUIValues();

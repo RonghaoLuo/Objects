@@ -30,6 +30,7 @@ public class Player : Character
         base.Awake();
         OnStartFullAuto += StartFullAuto;
         health.OnHealthZero += Explode;
+        health.OnHealthZero += GameManager.Instance.EndGame;
     }
 
     protected override void Start()
@@ -75,6 +76,10 @@ public class Player : Character
 
     protected override void Explode()
     {
+        OnStartFullAuto -= StartFullAuto;
+        health.OnHealthZero -= Explode;
+        health.OnHealthZero -= GameManager.Instance.EndGame;
+
         Debug.Log("Game Over");
         base.Explode();
     }
@@ -85,6 +90,8 @@ public class Player : Character
         if (pickableFeature != null)
         {
             pickableFeature.PickUp();
+
+
         }
     }
     public void TryAttack()
@@ -117,12 +124,8 @@ public class Player : Character
 
         numOfNukes--;
         OnNukeChange?.Invoke();
-        List<Enemy> targets = new List<Enemy>(Enemy.allSpawnedEnemies);
-        foreach (Enemy target in targets)
-        {
-            if (target == null) continue;
-            target.health.Kill();
-        }
+        
+        EnemyManager.Instance.KillAllEnemy();
     }
 
     private void StartFullAuto(float duration)

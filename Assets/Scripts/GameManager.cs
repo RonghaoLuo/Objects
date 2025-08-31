@@ -14,22 +14,22 @@ public class GameManager : MonoBehaviour
     
     private Player player;
     
-    public static GameManager Singleton;
+    public static GameManager Instance;
 
-    public Action OnGameEnd;
+    public Action OnGameEnd, OnStartMenu;
     public Action<Player> OnPlayerSpawn;
     public RectTransform playerMinBounds;
     public RectTransform playerMaxBounds;
 
     private void Awake()
     {
-        if (Singleton != null)
+        if (Instance != null)
         {
             Debug.LogError("There's another Game Manager as Instance");
             Destroy(gameObject);
             return;
         }
-        Singleton = this;
+        Instance = this;
     }
 
     public void StartGame()
@@ -39,13 +39,13 @@ public class GameManager : MonoBehaviour
 
         player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         OnPlayerSpawn?.Invoke(player);
-        player.health.OnHealthZero += EndGame;
+        //player.health.OnHealthZero += EndGame;
 
         
         enemyManager.StartSpawnEnemiesCoroutine();
     }
 
-    void EndGame()
+    public void EndGame()
     {
         OnGameEnd?.Invoke();    // useless for now
 
@@ -55,10 +55,14 @@ public class GameManager : MonoBehaviour
 
         playerUI.SetActive(false);
         endMenu.SetActive(true);
+
+        player = null;
     }
 
     public void StartMenu()
     {
+        OnStartMenu?.Invoke();
+
         endMenu.SetActive(false);
         startMenu.SetActive(true);
     }

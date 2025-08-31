@@ -12,18 +12,56 @@ public class EnemyManager : MonoBehaviour
 
     private Coroutine spawnEnemiesCoroutine;
 
+    public static EnemyManager Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There's another Enemy Manager as Instance");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.OnStartMenu += DestroyAllEnemy;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnStartMenu -= DestroyAllEnemy;
+    }
+
+    public void KillAllEnemy()
+    {
+        List<Enemy> allEnemies = new List<Enemy>(Enemy.allSpawnedEnemies);
+        foreach (Enemy enemy in allEnemies)
+        {
+            if (enemy == null) continue;
+            enemy.health.Kill();
+        }
+    }
+
+    public void DestroyAllEnemy()
+    {
+        List<Enemy> allEnemies = new List<Enemy>(Enemy.allSpawnedEnemies);
+        foreach (Enemy enemy in allEnemies)
+        {
+            if (enemy == null) continue;
+            Destroy(enemy.gameObject);
+        }
+
+        Enemy.allSpawnedEnemies.Clear();
+    }
+
     void SpawnSingleEnemy()
     {
         Enemy clonedEnemy = Instantiate(_enemyPrefab);
-        Transform randomSpawnPoint =
-            allSpawnPoints[UnityEngine.Random.Range(0, allSpawnPoints.Count)];
+        Transform randomSpawnPoint = allSpawnPoints[Random.Range(0, allSpawnPoints.Count)];
         clonedEnemy.transform.position = randomSpawnPoint.position;
-
-        clonedEnemy.health.OnHealthZero +=
-            (() =>
-            {
-                ItemSpawnerManager.Instance.TrySpawnItem(clonedEnemy.transform.position, clonedEnemy.transform.rotation);
-            });
     }
 
     IEnumerator SpawnEnemiesCoroutine()

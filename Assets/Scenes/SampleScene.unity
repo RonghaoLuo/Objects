@@ -13716,7 +13716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c218800743332409e6e4090f30430f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUps:
+  powerUpPrefabs:
   - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
   chanceOfSpawn: 0.5
 --- !u!114 &2052164247
