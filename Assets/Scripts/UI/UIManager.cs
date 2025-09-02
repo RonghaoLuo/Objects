@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI numOfEnemiesText;
     [SerializeField] private GameObject[] nukeIcons;
+    [SerializeField] private TextMeshProUGUI endScoreText;
 
     Player player;
 
@@ -17,18 +18,20 @@ public class UIManager : MonoBehaviour
         numOfEnemiesText.text = "N/A";
     }
 
-    private void OnEnable()
+    private void Start()
     {
         GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
+        GameManager.Instance.OnGameEnd += UpdateEndScoreText;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
         ScoreManager.Instance.OnScoreChange -= UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange -= UpdateNumOfEnemiesText;
+        GameManager.Instance.OnGameEnd -= UpdateEndScoreText;
     }
 
     private void UpdateHealthText()
@@ -40,11 +43,17 @@ public class UIManager : MonoBehaviour
     private void UpdateScoreText(int updatedScoreValue)
     {
         scoreText.text = updatedScoreValue.ToString();
+        Debug.Log("score updated, current score is: " + updatedScoreValue);
     }
 
     private void UpdateNumOfEnemiesText(int numOfSpawnedEnemies)
     {
         numOfEnemiesText.text = $"Enemies: {numOfSpawnedEnemies}";
+    }
+
+    private void UpdateEndScoreText()
+    {
+        endScoreText.text = ScoreManager.Instance.GetScore().ToString();
     }
 
     private void UpdateNuke()

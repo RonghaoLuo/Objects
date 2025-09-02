@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float _spawnCooldown = 1f;
     [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private GameObject[] _enemyPrefabs;
 
     private Coroutine spawnEnemiesCoroutine;
 
@@ -59,7 +59,9 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnSingleEnemy()
     {
-        Enemy clonedEnemy = Instantiate(_enemyPrefab);
+        GameObject randomEnemyToSpawn = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)];
+
+        GameObject clonedEnemy = Instantiate(randomEnemyToSpawn);
         Transform randomSpawnPoint = allSpawnPoints[Random.Range(0, allSpawnPoints.Count)];
         clonedEnemy.transform.position = randomSpawnPoint.position;
     }

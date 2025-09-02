@@ -7,6 +7,8 @@ public class PowerUp : MonoBehaviour, IPickable
 
     private void Start()
     {
+        ItemSpawnerManager.Instance.allManagerSpawnedItems.Add(gameObject);
+
         GameManager.Instance.OnPlayerSpawn += SetPlayer;
         GameManager.Instance.OnGameEnd += RemovePlayer;
         if (_player == null)
@@ -17,6 +19,8 @@ public class PowerUp : MonoBehaviour, IPickable
 
     private void OnDestroy()
     {
+        ItemSpawnerManager.Instance.allManagerSpawnedItems.Remove(gameObject);
+
         GameManager.Instance.OnPlayerSpawn -= SetPlayer;
         GameManager.Instance.OnGameEnd -= RemovePlayer;
     }

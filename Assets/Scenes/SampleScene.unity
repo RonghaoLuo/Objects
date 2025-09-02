@@ -1291,7 +1291,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249996470}
-  - component: {fileID: 249996466}
   - component: {fileID: 249996469}
   - component: {fileID: 249996468}
   - component: {fileID: 249996467}
@@ -1302,25 +1301,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &249996466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249996465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2ec6a2d6601d642ba475d5502cab91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1993374728}
-  healthText: {fileID: 1373709893}
-  numOfEnemiesText: {fileID: 928553414}
-  nukeIcons:
-  - {fileID: 6959757011752684770}
-  - {fileID: 1276840021}
-  - {fileID: 273085112}
 --- !u!114 &249996467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13649,6 +13629,7 @@ GameObject:
   - component: {fileID: 2052164245}
   - component: {fileID: 2052164246}
   - component: {fileID: 2052164247}
+  - component: {fileID: 2052164249}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -13716,9 +13697,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c218800743332409e6e4090f30430f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpPrefabs:
+  itemPrefabs:
   - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
   chanceOfSpawn: 0.5
+  allManagerSpawnedItems: []
 --- !u!114 &2052164247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13755,7 +13737,30 @@ MonoBehaviour:
   - {fileID: 514378770}
   - {fileID: 1257329710}
   - {fileID: 162095503}
-  _enemyPrefab: {fileID: 6905838643129140031, guid: 19d4033d0c1dd804e87c635f7c976b2e, type: 3}
+  _enemyPrefabs:
+  - {fileID: 4866491314716564990, guid: f058bee136e716642978c2068996a8e4, type: 3}
+  - {fileID: 7769314640366481545, guid: 5ef140a3ba9dc8746bda30513a86e210, type: 3}
+  - {fileID: 2698589583847714988, guid: 19d4033d0c1dd804e87c635f7c976b2e, type: 3}
+--- !u!114 &2052164249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052164242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2ec6a2d6601d642ba475d5502cab91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1993374728}
+  healthText: {fileID: 1373709893}
+  numOfEnemiesText: {fileID: 928553414}
+  nukeIcons:
+  - {fileID: 6959757011752684770}
+  - {fileID: 1276840021}
+  - {fileID: 273085112}
+  endScoreText: {fileID: 1465514344}
 --- !u!1 &2082965552
 GameObject:
   m_ObjectHideFlags: 0

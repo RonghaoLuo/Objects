@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
 
-    public Action OnGameEnd, OnStartMenu;
+    public Action OnGameStart, OnGameEnd, OnStartMenu;
     public Action<Player> OnPlayerSpawn;
     public RectTransform playerMinBounds;
     public RectTransform playerMaxBounds;
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        OnGameStart?.Invoke();
         startMenu.SetActive(false);
         playerUI.SetActive(true);
 
