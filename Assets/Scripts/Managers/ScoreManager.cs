@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
         }
         Instance = this;
 
-        GameManager.Instance.OnGameEnd += RegisterHighestScore;
+        OnScoreChange += RegisterHighestScore;
         GameManager.Instance.OnGameStart += ResetScore;
     }
 
@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnGameEnd -= RegisterHighestScore;
+        OnScoreChange -= RegisterHighestScore;
         GameManager.Instance.OnGameStart -= ResetScore;
     }
 
@@ -41,11 +41,11 @@ public class ScoreManager : MonoBehaviour
         OnScoreChange?.Invoke(_currentScore);
     }
 
-    public void RegisterHighestScore()
+    public void RegisterHighestScore(int newHighestScore)
     {
-        if (_currentScore > _highestScore)
+        if (newHighestScore > _highestScore)
         {
-            _highestScore = _currentScore;
+            _highestScore = newHighestScore;
             PlayerPrefs.SetInt("HighScore", _highestScore);
         }
     }
@@ -60,5 +60,10 @@ public class ScoreManager : MonoBehaviour
     public int GetScore()
     {
         return _currentScore;
+    }
+
+    public int GetHighestScore()
+    {
+        return _highestScore;
     }
 }

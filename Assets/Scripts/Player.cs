@@ -30,7 +30,14 @@ public class Player : Character
         base.Awake();
         OnStartFullAuto += StartFullAuto;
         health.OnHealthZero += Explode;
-        health.OnHealthZero += GameManager.Instance.EndGame;
+        health.OnHealthZero += GameManager.Instance.DelayedEndGame;
+    }
+
+    private void OnDestroy()
+    {
+        OnStartFullAuto -= StartFullAuto;
+        health.OnHealthZero -= Explode;
+        health.OnHealthZero -= GameManager.Instance.DelayedEndGame;
     }
 
     protected override void Start()
@@ -76,10 +83,6 @@ public class Player : Character
 
     protected override void Explode()
     {
-        OnStartFullAuto -= StartFullAuto;
-        health.OnHealthZero -= Explode;
-        health.OnHealthZero -= GameManager.Instance.EndGame;
-
         Debug.Log("Game Over");
         base.Explode();
     }

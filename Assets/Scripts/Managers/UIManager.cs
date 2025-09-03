@@ -7,7 +7,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI numOfEnemiesText;
     [SerializeField] private GameObject[] nukeIcons;
-    [SerializeField] private TextMeshProUGUI endScoreText;
+    [SerializeField] private TextMeshProUGUI endMenuScore;
+    [SerializeField] private TextMeshProUGUI endMenuHighestScore;
+    [SerializeField] private TextMeshProUGUI startMenuHighestScore;
 
     Player player;
 
@@ -23,7 +25,10 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
-        GameManager.Instance.OnGameEnd += UpdateEndScoreText;
+        GameManager.Instance.OnGameEnd += UpdateEndGameMenu;
+        GameManager.Instance.OnStartMenu += UpdateStartMenu;
+
+        UpdateStartMenu();
     }
 
     private void OnDestroy()
@@ -31,7 +36,8 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
         ScoreManager.Instance.OnScoreChange -= UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange -= UpdateNumOfEnemiesText;
-        GameManager.Instance.OnGameEnd -= UpdateEndScoreText;
+        GameManager.Instance.OnGameEnd -= UpdateEndGameMenu;
+        GameManager.Instance.OnStartMenu -= UpdateStartMenu;
     }
 
     private void UpdateHealthText()
@@ -51,9 +57,15 @@ public class UIManager : MonoBehaviour
         numOfEnemiesText.text = $"Enemies: {numOfSpawnedEnemies}";
     }
 
-    private void UpdateEndScoreText()
+    private void UpdateEndGameMenu()
     {
-        endScoreText.text = ScoreManager.Instance.GetScore().ToString();
+        endMenuScore.text = ScoreManager.Instance.GetScore().ToString();
+        endMenuHighestScore.text = ScoreManager.Instance.GetHighestScore().ToString();
+    }
+
+    private void UpdateStartMenu()
+    {
+        startMenuHighestScore.text = "Highest Score: " + ScoreManager.Instance.GetHighestScore().ToString();
     }
 
     private void UpdateNuke()

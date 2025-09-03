@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerUI;
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Player playerPrefab;
+    [SerializeField] private float delayForEndGame;
     
     private Player player;
     
@@ -48,9 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        OnGameEnd?.Invoke();    // useless for now
-
-        ScoreManager.Instance.RegisterHighestScore();
+        OnGameEnd?.Invoke();
 
         enemyManager.StopSpawnEnemiesCoroutine();
 
@@ -58,6 +57,11 @@ public class GameManager : MonoBehaviour
         endMenu.SetActive(true);
 
         player = null;
+    }
+
+    public void DelayedEndGame()
+    {
+        Invoke("EndGame", delayForEndGame);
     }
 
     public void StartMenu()
