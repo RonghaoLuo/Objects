@@ -47,11 +47,11 @@ public class RangeEnemy : Enemy
 
     protected virtual void Attack(Character target)
     {
-        if (CharacterAudio != null)
+        if (attackAudio != null)
         {
-            CharacterAudio.volume = currentWeapon.fireAudioVolume;
-            CharacterAudio.pitch = currentWeapon.fireAudioPitch;
-            CharacterAudio.PlayOneShot(currentWeapon.fireAudio);
+            attackAudio.volume = currentWeapon.fireAudioVolume;
+            attackAudio.pitch = currentWeapon.fireAudioPitch;
+            attackAudio.PlayOneShot(currentWeapon.fireAudio);
         }
         
         if (currentWeapon != null)

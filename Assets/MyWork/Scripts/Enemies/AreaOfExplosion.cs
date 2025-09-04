@@ -6,7 +6,7 @@ public class AreaOfExplosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Character collidedChar = collision.GetComponent<Character>();
+        Character collidedChar = collision.GetComponentInParent<Character>();
         if (collidedChar == null)
         {
             return;
@@ -17,7 +17,7 @@ public class AreaOfExplosion : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Character collidedChar = collision.GetComponent<Character>();
+        Character collidedChar = collision.GetComponentInParent<Character>();
         if (collidedChar == null)
         {
             return;

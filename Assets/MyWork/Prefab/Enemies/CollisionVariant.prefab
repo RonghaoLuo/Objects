@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: -5045199026050070982}
     - target: {fileID: 3919303933304265054, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
       propertyPath: m_Name
-      value: EnemyCollisionVariant
+      value: CollisionVariant
       objectReference: {fileID: 0}
     - target: {fileID: 6183308770456929082, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96,7 +96,7 @@ MonoBehaviour:
   _rotateSpeed: 0.7
   myRigidbody: {fileID: 8236156110711203653}
   sprite: {fileID: 967046581409666498}
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
   CharacterAudio: {fileID: 0}
   score: 10
   _attackCooldown: 1

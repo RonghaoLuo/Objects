@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc1c2a6bd1ee1ac43ae55950defce56a, type: 3}
-  m_Name: Laser
+  m_Name: Enemy Gun
   m_EditorClassIdentifier: 
-  weaponName: Laser
-  targetType: Enemy
-  damage: 50
-  bulletSpeed: 30
+  weaponName: Enemy Gun
+  damage: 10
+  bulletSpeed: 10
   fireAudio: {fileID: 0}
   fireAudioVolume: 0
   fireAudioPitch: 0
-  _bulletReference: {fileID: 6860604331482621228, guid: e9ba8ddb4cee2cd469caf4f48fe6b295, type: 3}
+  _bulletReference: {fileID: 6860604331482621228, guid: cd9bf80af822794448c46d31eefb8d7a, type: 3}

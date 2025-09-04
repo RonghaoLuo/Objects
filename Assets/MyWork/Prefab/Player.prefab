@@ -326,8 +326,8 @@ MonoBehaviour:
   _rotateSpeed: 1
   myRigidbody: {fileID: 5790159023205926413}
   sprite: {fileID: 8688891803391916993}
-  destroyEffect: {fileID: 0}
-  CharacterAudio: {fileID: 8300862263172547975}
+  destroyEffect: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
+  attackAudio: {fileID: 8300862263172547975}
   currentWeapon: {fileID: 11400000, guid: a7b1ef35ae18d9e4781ff3c3c4b46324, type: 2}
   numOfNukes: 0
   _weaponTip: {fileID: 3899100801299418138}

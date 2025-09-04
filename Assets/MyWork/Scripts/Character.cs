@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected Rigidbody2D myRigidbody;
     [SerializeField] protected SpriteRenderer sprite;
     [SerializeField] protected GameObject destroyEffect;
-    [SerializeField] protected AudioSource CharacterAudio;
+    [SerializeField] protected AudioSource attackAudio;
 
     // reserved time to do stuff before the game starts
     protected virtual void Awake()

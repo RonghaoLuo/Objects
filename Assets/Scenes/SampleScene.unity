@@ -12069,7 +12069,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 0}
   sprite: {fileID: 1726099518}
   destroyEffect: {fileID: 0}
-  CharacterAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
 --- !u!212 &1726099518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13953,8 +13953,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2052164244}
-  - component: {fileID: 2052164243}
   - component: {fileID: 2052164248}
+  - component: {fileID: 2052164243}
   - component: {fileID: 2052164245}
   - component: {fileID: 2052164246}
   - component: {fileID: 2052164249}
@@ -14055,9 +14055,7 @@ MonoBehaviour:
   - {fileID: 1257329710}
   - {fileID: 162095503}
   _enemyPrefabs:
-  - {fileID: 4866491314716564990, guid: f058bee136e716642978c2068996a8e4, type: 3}
   - {fileID: 7769314640366481545, guid: 5ef140a3ba9dc8746bda30513a86e210, type: 3}
-  - {fileID: 2698589583847714988, guid: 19d4033d0c1dd804e87c635f7c976b2e, type: 3}
 --- !u!114 &2052164249
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -108,11 +108,11 @@ public class Player : Character
 
     public override void Attack()
     {
-        if (CharacterAudio != null)
+        if (attackAudio != null)
         {
-            CharacterAudio.volume = currentWeapon.fireAudioVolume;
-            CharacterAudio.pitch = currentWeapon.fireAudioPitch;
-            CharacterAudio.PlayOneShot(currentWeapon.fireAudio);
+            attackAudio.volume = currentWeapon.fireAudioVolume;
+            attackAudio.pitch = currentWeapon.fireAudioPitch;
+            attackAudio.PlayOneShot(currentWeapon.fireAudio);
         }
         base.Attack();
         if (currentWeapon != null)

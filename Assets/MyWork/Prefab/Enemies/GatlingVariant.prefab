@@ -126,13 +126,13 @@ MonoBehaviour:
   _rotateSpeed: 0.7
   myRigidbody: {fileID: 1492561353391540759}
   sprite: {fileID: 7751173525869066384}
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   CharacterAudio: {fileID: 0}
   score: 10
   _attackCooldown: 0.5
-  _attackDamage: 1
+  _attackDamage: 0
   distanceToAttack: 6
-  currentWeapon: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 77b335d9ac0ca684e828105aad4921e1, type: 2}
   weaponTip: {fileID: 779712765384358133}
 --- !u!4 &5105107616859630280 stripped
 Transform:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 353391350210291147}
   - component: {fileID: 4210599577148605474}
   - component: {fileID: 612012644089083448}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Area of Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,6 +54,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,6 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
@@ -247,12 +250,12 @@ MonoBehaviour:
   _rotateSpeed: 0.7
   myRigidbody: {fileID: 6491889149395061298}
   sprite: {fileID: 2679858573962426549}
-  destroyEffect: {fileID: 0}
-  CharacterAudio: {fileID: 0}
+  destroyEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  attackAudio: {fileID: 0}
   score: 20
   _attackCooldown: 0
   _attackDamage: 0
-  _explosionDamage: 100
+  _explosionDamage: 50
   _explosionRadius: 5
   _areaOfExplosion: {fileID: 159846889529027995}
   charactersInRangeOfExplosion: []
