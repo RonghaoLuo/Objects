@@ -99,6 +99,11 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 6905838643129140031}
   m_SourcePrefab: {fileID: 100100000, guid: cb626dc88d4822b4d8d5643d4275cdb7, type: 3}
+--- !u!82 &643094300339466761 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6278321750469362630, guid: cb626dc88d4822b4d8d5643d4275cdb7, type: 3}
+  m_PrefabInstance: {fileID: 6903365693750260175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1492561353391540759 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5438952112920411096, guid: cb626dc88d4822b4d8d5643d4275cdb7, type: 3}
@@ -127,7 +132,8 @@ MonoBehaviour:
   myRigidbody: {fileID: 1492561353391540759}
   sprite: {fileID: 7751173525869066384}
   destroyEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
-  CharacterAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
+  destroyAudio: {fileID: 643094300339466761}
   score: 10
   _attackCooldown: 0.5
   _attackDamage: 0

@@ -33,11 +33,13 @@ public class Player : Character
         health.OnHealthZero += GameManager.Instance.DelayedEndGame;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         OnStartFullAuto -= StartFullAuto;
         health.OnHealthZero -= Explode;
         health.OnHealthZero -= GameManager.Instance.DelayedEndGame;
+
+        base.OnDestroy();
     }
 
     protected override void Start()

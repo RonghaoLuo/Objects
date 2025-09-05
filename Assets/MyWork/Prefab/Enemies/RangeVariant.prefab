@@ -79,6 +79,11 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 549965134199170021, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
   m_PrefabInstance: {fileID: 5537972069292152893}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &6278321750469362630 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2016416498970811387, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+  m_PrefabInstance: {fileID: 5537972069292152893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8844786441257337187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3919303933304265054, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
@@ -102,7 +107,8 @@ MonoBehaviour:
   myRigidbody: {fileID: 5438952112920411096}
   sprite: {fileID: 3772923318756985183}
   destroyEffect: {fileID: 0}
-  CharacterAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
+  destroyAudio: {fileID: 6278321750469362630}
   score: 10
   _attackCooldown: 0
   _attackDamage: 0

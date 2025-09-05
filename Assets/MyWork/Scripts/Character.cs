@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected SpriteRenderer sprite;
     [SerializeField] protected GameObject destroyEffect;
     [SerializeField] protected AudioSource attackAudio;
+    [SerializeField] private AudioSource destroyAudio;
 
     // reserved time to do stuff before the game starts
     protected virtual void Awake()
@@ -23,6 +24,11 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         ChangeSpriteColor(Random.value, Random.value, Random.value);
+    }
+
+    protected virtual void OnDestroy()
+    {
+        
     }
 
     protected virtual void Update()
@@ -41,6 +47,15 @@ public class Character : MonoBehaviour
         {
             Instantiate(destroyEffect,transform.position, transform.rotation);
         }
+
+        if (destroyAudio != null)
+        {
+            destroyAudio.pitch = Random.Range(0.25f, 1.75f);
+            destroyAudio.transform.parent = null;
+            destroyAudio.Play();
+            Destroy(destroyAudio.gameObject, destroyAudio.clip.length);
+        }
+
         Destroy(gameObject);
     }
 

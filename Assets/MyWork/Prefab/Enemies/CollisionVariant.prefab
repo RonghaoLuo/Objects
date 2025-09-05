@@ -97,10 +97,16 @@ MonoBehaviour:
   myRigidbody: {fileID: 8236156110711203653}
   sprite: {fileID: 967046581409666498}
   destroyEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
-  CharacterAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
+  destroyAudio: {fileID: 7932714878261026651}
   score: 10
   _attackCooldown: 1
   _attackDamage: 10
+--- !u!82 &7932714878261026651 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2016416498970811387, guid: 3c80f61224d768d4e9728119e346b433, type: 3}
+  m_PrefabInstance: {fileID: 8497564862066459808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &8236156110711203653 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 549965134199170021, guid: 3c80f61224d768d4e9728119e346b433, type: 3}

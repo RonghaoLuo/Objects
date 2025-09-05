@@ -23,12 +23,14 @@ public class Enemy : Character
         health.OnHealthZero += TrySpawnItem;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
         GameManager.Instance.OnGameEnd -= RemovePlayerReference;
         health.OnHealthZero -= DoOnHealthZero;
         health.OnHealthZero -= TrySpawnItem;
+
+        base.OnDestroy();
     }
 
     protected override void Start()

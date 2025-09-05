@@ -149,6 +149,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 604844016466842739, guid: f058bee136e716642978c2068996a8e4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 967046581409666498, guid: f058bee136e716642978c2068996a8e4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -201,6 +205,14 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 3883193887346367368}
+    - target: {fileID: 7921714616364740250, guid: f058bee136e716642978c2068996a8e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921714616364740250, guid: f058bee136e716642978c2068996a8e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5045199026050070982, guid: f058bee136e716642978c2068996a8e4, type: 3}
     m_RemovedGameObjects: []
@@ -221,6 +233,11 @@ Transform:
 --- !u!212 &2679858573962426549 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 967046581409666498, guid: f058bee136e716642978c2068996a8e4, type: 3}
+  m_PrefabInstance: {fileID: 2908030758754807159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5065930239331873324 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7932714878261026651, guid: f058bee136e716642978c2068996a8e4, type: 3}
   m_PrefabInstance: {fileID: 2908030758754807159}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &6491889149395061298 stripped
@@ -252,6 +269,7 @@ MonoBehaviour:
   sprite: {fileID: 2679858573962426549}
   destroyEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   attackAudio: {fileID: 0}
+  destroyAudio: {fileID: 5065930239331873324}
   score: 20
   _attackCooldown: 0
   _attackDamage: 0

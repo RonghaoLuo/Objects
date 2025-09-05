@@ -12070,6 +12070,7 @@ MonoBehaviour:
   sprite: {fileID: 1726099518}
   destroyEffect: {fileID: 0}
   attackAudio: {fileID: 0}
+  destroyAudio: {fileID: 0}
 --- !u!212 &1726099518
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14028,6 +14029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefabs:
   - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
+  - {fileID: 3716031433222519042, guid: 5d560631a5d00174f875bb248a7002f3, type: 3}
+  - {fileID: 3716031433222519042, guid: b37331974c816e647bffc29e0d2d6cb8, type: 3}
   chanceOfSpawn: 0.5
   allManagerSpawnedItems: []
 --- !u!114 &2052164248
@@ -14055,6 +14058,8 @@ MonoBehaviour:
   - {fileID: 1257329710}
   - {fileID: 162095503}
   _enemyPrefabs:
+  - {fileID: 2698589583847714988, guid: 19d4033d0c1dd804e87c635f7c976b2e, type: 3}
+  - {fileID: 4866491314716564990, guid: f058bee136e716642978c2068996a8e4, type: 3}
   - {fileID: 7769314640366481545, guid: 5ef140a3ba9dc8746bda30513a86e210, type: 3}
 --- !u!114 &2052164249
 MonoBehaviour:

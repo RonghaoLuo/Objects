@@ -16,6 +16,6 @@ MonoBehaviour:
   damage: 50
   bulletSpeed: 30
   fireAudio: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
-  fireAudioVolume: 0.3
+  fireAudioVolume: 0.2
   fireAudioPitch: 1
   _bulletReference: {fileID: 6860604331482621228, guid: e9ba8ddb4cee2cd469caf4f48fe6b295, type: 3}
