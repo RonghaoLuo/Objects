@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected float _moveSpeed;
     [SerializeField] protected float _rotateSpeed;
+    [SerializeField] protected int penetrationResistance;
 
     [SerializeField] protected Rigidbody2D myRigidbody;
     [SerializeField] protected SpriteRenderer sprite;
@@ -39,6 +40,11 @@ public class Character : MonoBehaviour
     public virtual void Attack()
     {
         
+    }
+
+    public int GetPenetrationResistance()
+    {
+        return penetrationResistance;
     }
 
     protected virtual void Explode()

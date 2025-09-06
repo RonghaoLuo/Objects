@@ -129,6 +129,7 @@ MonoBehaviour:
   _maxHealth: 100
   _moveSpeed: 5
   _rotateSpeed: 0.7
+  penetrationResistance: 1
   myRigidbody: {fileID: 1492561353391540759}
   sprite: {fileID: 7751173525869066384}
   destroyEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}

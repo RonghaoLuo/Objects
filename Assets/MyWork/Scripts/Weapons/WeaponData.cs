@@ -6,6 +6,7 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     public int damage;
     public float bulletSpeed;
+    public int penetration;
     public AudioClip fireAudio;
     public float fireAudioVolume;
     public float fireAudioPitch;
@@ -17,7 +18,7 @@ public class WeaponData : ScriptableObject
     public void ShootWeapon(Transform weaponTip, int LayerIndex)
     {
         Bullet clonedBullet = Instantiate(_bulletReference, weaponTip.position, weaponTip.rotation);
-        clonedBullet.Initialize(weaponTip, LayerIndex, bulletSpeed, damage);
+        clonedBullet.Initialize(weaponTip, LayerIndex, bulletSpeed, damage, penetration);
     }
 
     //public WeaponData(Bullet bullet, Transform weaponTip, float bulletSpeed = 20)

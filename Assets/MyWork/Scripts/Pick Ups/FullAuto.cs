@@ -4,16 +4,6 @@ public class FullAuto : PowerUp
 {
     [SerializeField] private float _fullAutoDuration;
 
-    private void Awake()
-    {
-        _player = FindAnyObjectByType<Player>();
-    }
-
-    public override void PickUp()
-    {
-        base.PickUp();
-    }
-
     protected override void ActivatePowerUp()
     {
         base.ActivatePowerUp();

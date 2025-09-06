@@ -6,6 +6,7 @@ public class ItemSpawnerManager : MonoBehaviour
     //[SerializeField] private ItemDrop[] powerUpRates;
     [SerializeField] private GameObject[] itemPrefabs;
     [SerializeField] private float chanceOfSpawn;
+    [SerializeField] private float despawnTime;
 
     public List<GameObject> allManagerSpawnedItems = new List<GameObject>();
 
@@ -41,7 +42,9 @@ public class ItemSpawnerManager : MonoBehaviour
         if (Random.value <= chanceOfSpawn)
         {
             GameObject randomObject = itemPrefabs[Random.Range(0, itemPrefabs.Length)];
-            Instantiate(randomObject, spawnPosition, spawnRotation);
+            GameObject item = Instantiate(randomObject, spawnPosition, spawnRotation);
+
+            Destroy(item, despawnTime);
         }
         // can do weighted chance
     }

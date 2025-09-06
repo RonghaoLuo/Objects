@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Enemy Gun
   damage: 10
   bulletSpeed: 10
+  penetration: 1
   fireAudio: {fileID: 0}
   fireAudioVolume: 0
   fireAudioPitch: 0

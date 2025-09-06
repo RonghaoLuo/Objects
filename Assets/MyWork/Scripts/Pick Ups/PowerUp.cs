@@ -5,7 +5,7 @@ public class PowerUp : MonoBehaviour, IPickable
 {
     protected Player _player;
 
-    private void Start()
+    protected virtual void Start()
     {
         ItemSpawnerManager.Instance.allManagerSpawnedItems.Add(gameObject);
 
@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour, IPickable
         }
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         ItemSpawnerManager.Instance.allManagerSpawnedItems.Remove(gameObject);
 
@@ -25,12 +25,12 @@ public class PowerUp : MonoBehaviour, IPickable
         GameManager.Instance.OnGameEnd -= RemovePlayer;
     }
 
-    void SetPlayer(Player player)
+    protected void SetPlayer(Player player)
     {
         _player = player;
     }
 
-    void RemovePlayer()
+    protected void RemovePlayer()
     {
         _player = null;
     }
