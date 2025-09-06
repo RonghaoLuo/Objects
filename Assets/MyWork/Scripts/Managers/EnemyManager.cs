@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private int _maxNumOfEnemy;
+    [SerializeField] private int maxNumOfEnemy;
+    [SerializeField] private int currentMaxNumOfEnemy;
     [SerializeField] private float _spawnCooldown = 1f;
     [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
@@ -23,16 +24,34 @@ public class EnemyManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        currentMaxNumOfEnemy = 2;
     }
 
     private void Start()
     {
         GameManager.Instance.OnStartMenu += DestroyAllEnemy;
+        GameManager.Instance.OnGameEnd += ResetMaxNumOfEnemy;
+        GameManager.Instance.OnGameStart += ResetMaxNumOfEnemy;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.OnStartMenu -= DestroyAllEnemy;
+        GameManager.Instance.OnGameEnd -= ResetMaxNumOfEnemy;
+        GameManager.Instance.OnGameStart -= ResetMaxNumOfEnemy;
+    }
+
+    private void Update()
+    {
+        if (currentMaxNumOfEnemy < maxNumOfEnemy)
+        {
+            currentMaxNumOfEnemy = 2 + 2 * ScoreManager.Instance.GetCurrentScore() / 100;
+        }
+        else
+        {
+            currentMaxNumOfEnemy = maxNumOfEnemy;
+        }
     }
 
     public void KillAllEnemy()
@@ -72,7 +91,7 @@ public class EnemyManager : MonoBehaviour
 
         while (true)
         {
-            if (Enemy.allSpawnedEnemies.Count < _maxNumOfEnemy)
+            if (Enemy.allSpawnedEnemies.Count < currentMaxNumOfEnemy)
             {
                 SpawnSingleEnemy();
                 yield return new WaitForSeconds(_spawnCooldown);
@@ -94,5 +113,13 @@ public class EnemyManager : MonoBehaviour
             StopCoroutine(spawnEnemiesCoroutine);
             spawnEnemiesCoroutine = null;
         }
+    }
+
+    /// <summary>
+    /// Resets the CurrentMaxNumOfEnemy to 2.
+    /// </summary>
+    private void ResetMaxNumOfEnemy()
+    {
+        currentMaxNumOfEnemy = 2;
     }
 }

@@ -57,7 +57,7 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("score is reset");
     }
 
-    public int GetScore()
+    public int GetCurrentScore()
     {
         return _currentScore;
     }

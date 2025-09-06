@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateEndGameMenu()
     {
-        endMenuScore.text = ScoreManager.Instance.GetScore().ToString();
+        endMenuScore.text = ScoreManager.Instance.GetCurrentScore().ToString();
         endMenuHighestScore.text = ScoreManager.Instance.GetHighestScore().ToString();
     }
 

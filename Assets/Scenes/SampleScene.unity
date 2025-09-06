@@ -14028,10 +14028,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefabs:
-  - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
   - {fileID: 3716031433222519042, guid: 5d560631a5d00174f875bb248a7002f3, type: 3}
   - {fileID: 3716031433222519042, guid: b37331974c816e647bffc29e0d2d6cb8, type: 3}
-  chanceOfSpawn: 0.5
+  - {fileID: 3716031433222519042, guid: 4c2a4096e92b68d4b93f4028f9fb854b, type: 3}
+  chanceOfSpawn: 1
   allManagerSpawnedItems: []
 --- !u!114 &2052164248
 MonoBehaviour:
@@ -14045,7 +14045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49c46afafcb1304f98dab845aa371e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxNumOfEnemy: 2
+  maxNumOfEnemy: 50
+  currentMaxNumOfEnemy: 0
   _spawnCooldown: 1
   _allManagerSpawnedEnemies: []
   allSpawnPoints:
