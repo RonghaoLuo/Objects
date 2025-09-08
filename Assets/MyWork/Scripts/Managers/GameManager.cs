@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void StartGame()
+    public void StartGameNormal()
     {
         OnGameStart?.Invoke();
         startMenu.SetActive(false);
@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
 
         
         enemyManager.StartSpawnEnemiesCoroutine();
+    }
+
+    public void StartGameWithAllWeapons()
+    {
+        StartGameNormal();
+        player.SetActiveAllWeapons(true);
     }
 
     public void EndGame()

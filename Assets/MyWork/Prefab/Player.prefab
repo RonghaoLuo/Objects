@@ -460,10 +460,16 @@ MonoBehaviour:
   destroyEffect: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
   attackAudio: {fileID: 8300862263172547975}
   destroyAudio: {fileID: 3953239934185388768}
-  currentWeapon: {fileID: 11400000, guid: 9bf255d2b2e149441ae686f7e62a0554, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
   numOfNukes: 0
   _weaponTip: {fileID: 3899100801299418138}
   _fullAutoUI: {fileID: 3759450669431804673}
+  weapons:
+  - {fileID: 11400000, guid: 227932a2986dce442bd866c7fb67c5fd, type: 2}
+  - {fileID: 11400000, guid: 55bdbccdcc50c9f40807063240d80436, type: 2}
+  - {fileID: 11400000, guid: a7b1ef35ae18d9e4781ff3c3c4b46324, type: 2}
+  - {fileID: 11400000, guid: 9bf255d2b2e149441ae686f7e62a0554, type: 2}
+  weaponActivity: 01000000
   _currentAttackCooldown: 0
   _semiAutoAttackCooldown: 0.2
   _fullAutoAttackCooldown: 0.05

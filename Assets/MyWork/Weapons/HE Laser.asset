@@ -19,6 +19,6 @@ MonoBehaviour:
   penetration: 100
   fireAudio: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
   fireAudioVolume: 0.2
-  fireAudioPitch: 1
+  fireAudioPitch: 0.5
   _bulletReference: {fileID: 0}
   beamReference: {fileID: 1869217972020273015, guid: f8f6e49ef7238f24cb4072b07af88c6f, type: 3}

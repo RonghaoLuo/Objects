@@ -20,6 +20,8 @@ public class Player : Character
 
     [SerializeField] private Transform _weaponTip;
     [SerializeField] private UIFullAuto _fullAutoUI;
+    [SerializeField] private List<WeaponData> weapons;
+    [SerializeField] private List<bool> weaponActivity;
 
     [SerializeField] private float _currentAttackCooldown;
     [SerializeField] private float _semiAutoAttackCooldown;
@@ -76,6 +78,23 @@ public class Player : Character
         }
 
         ChangeSpriteColor(Color.Lerp(Color.red, Color.green, health.GetHealthInFraction()));
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && weapons[0] != null && weaponActivity[0])
+        {
+            currentWeapon = weapons[0];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && weapons[1] != null && weaponActivity[1])
+        {
+            currentWeapon = weapons[1];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && weapons[2] != null && weaponActivity[2])
+        {
+            currentWeapon = weapons[2];
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && weapons[3] != null && weaponActivity[3])
+        {
+            currentWeapon = weapons[3];
+        }
     }
 
     private void FixedUpdate()
@@ -153,5 +172,18 @@ public class Player : Character
 
         isOnFullAuto = false;
         _currentAttackCooldown = _semiAutoAttackCooldown;
+    }
+
+    public void SetActiveWeaponWithIndex(int weaponIndex, bool isActive)
+    {
+        weaponActivity[weaponIndex] = isActive;
+    }
+
+    public void SetActiveAllWeapons(bool isActive)
+    {
+        for (int i = 0; i < weaponActivity.Count; i++)
+        {
+            weaponActivity[i] = isActive;
+        }
     }
 }
