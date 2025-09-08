@@ -4,19 +4,15 @@ public class Beam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float residenceTime;
-    [SerializeField] private int LayerIndex;
 
     [SerializeField] private Rigidbody2D _myRigidbody;
     [SerializeField] private GameObject hitEffect;
 
     private int remainingPenetration;
 
-    public void Initialize(Transform weaponTip, int LayerIndex, int damage)
+    public void Initialize(Transform weaponTip, int damage)
     {
-        this.LayerIndex = LayerIndex;
         this.damage = damage;
-
-        LayerTools.SetLayerRecursively(gameObject, LayerIndex);
     }
 
     void Start()

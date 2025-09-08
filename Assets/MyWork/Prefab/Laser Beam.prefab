@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2449484302834280515}
   - component: {fileID: 668175256633360103}
   - component: {fileID: 4283665769924958871}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Beam Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 787883463332572970}
   - component: {fileID: 1869217972020273015}
   - component: {fileID: 1414982083696256986}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Laser Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Beam
   damage: 0
   residenceTime: 0.25
-  LayerIndex: 0
   _myRigidbody: {fileID: 1414982083696256986}
   hitEffect: {fileID: 0}
 --- !u!50 &1414982083696256986

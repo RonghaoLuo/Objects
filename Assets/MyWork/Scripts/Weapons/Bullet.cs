@@ -4,23 +4,17 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float speed;
-    [SerializeField] private int penetration;
-    [SerializeField] private int LayerIndex;
 
     [SerializeField] private Rigidbody2D _myRigidbody;
     [SerializeField] private GameObject hitEffect;
 
     private int remainingPenetration;
 
-    public void Initialize(Transform weaponTip, int LayerIndex, float speed, int damage, int penetration)
+    public void Initialize(Transform weaponTip, float speed, int damage, int penetration)
     {
-        this.LayerIndex = LayerIndex;
         this.speed = speed;
         this.damage = damage;
-        this.penetration = penetration;
         remainingPenetration = penetration;
-
-        gameObject.layer = LayerIndex;
     }
 
     void Start()

@@ -17,17 +17,17 @@ public class WeaponData : ScriptableObject
 
     //[SerializeField] private Transform shootOrigin;
 
-    public void ShootWeapon(Transform weaponTip, int LayerIndex)
+    public void ShootWeapon(Transform weaponTip)
     {
         if (currentProjectileType == ProjectileType.Bullet)
         {
             Bullet clonedBullet = Instantiate(_bulletReference, weaponTip.position, weaponTip.rotation);
-            clonedBullet.Initialize(weaponTip, LayerIndex, bulletSpeed, damage, penetration);
+            clonedBullet.Initialize(weaponTip, bulletSpeed, damage, penetration);
         }
         else if (currentProjectileType == ProjectileType.Beam)
         {
             Beam clonedBeam = Instantiate(beamReference, weaponTip.position, weaponTip.rotation);
-            clonedBeam.Initialize(weaponTip, LayerIndex, damage);
+            clonedBeam.Initialize(weaponTip, damage);
         }
     }
 

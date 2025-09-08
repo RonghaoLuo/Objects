@@ -119,7 +119,7 @@ public class Player : Character
         base.Attack();
         if (currentWeapon != null)
         {
-            currentWeapon.ShootWeapon(_weaponTip, 8);
+            currentWeapon.ShootWeapon(_weaponTip);
         }
     }
 

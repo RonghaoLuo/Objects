@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7641549627637529888}
   - component: {fileID: 8736524527563673678}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 1572750720951161214}
   - component: {fileID: 6371223811972200597}
   - component: {fileID: 577992219108574147}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,8 +192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: 0
-  penetration: 0
-  LayerIndex: 0
   _myRigidbody: {fileID: 577992219108574147}
   hitEffect: {fileID: 6121475481359698776, guid: 9ad7bd20c4524c24ea6d1e1bd069edcd, type: 3}
 --- !u!212 &1572750720951161214
