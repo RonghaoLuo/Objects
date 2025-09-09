@@ -17,6 +17,7 @@ public class Player : Character
     private bool isOnFullAuto = false;
     private float _nextAttackTime = 0f;
     private Coroutine activeFullAutoCoroutine;
+    private int currentWeaponIndex = 0;
 
     [SerializeField] private Transform _weaponTip;
     [SerializeField] private UIFullAuto _fullAutoUI;
@@ -82,18 +83,22 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapons[0] != null && weaponActivity[0])
         {
             currentWeapon = weapons[0];
+            currentWeaponIndex = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && weapons[1] != null && weaponActivity[1])
         {
             currentWeapon = weapons[1];
+            currentWeaponIndex = 1;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && weapons[2] != null && weaponActivity[2])
         {
             currentWeapon = weapons[2];
+            currentWeaponIndex = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && weapons[3] != null && weaponActivity[3])
         {
             currentWeapon = weapons[3];
+            currentWeaponIndex = 3;
         }
     }
 
@@ -185,5 +190,15 @@ public class Player : Character
         {
             weaponActivity[i] = isActive;
         }
+    }
+
+    public List<bool> GetWeaponActivity()
+    {
+        return weaponActivity;
+    }
+
+    public int GetCurrentWeaponIndex()
+    {
+        return currentWeaponIndex;
     }
 }

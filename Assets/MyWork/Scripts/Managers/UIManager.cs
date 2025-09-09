@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,11 +11,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endMenuScore;
     [SerializeField] private TextMeshProUGUI endMenuHighestScore;
     [SerializeField] private TextMeshProUGUI startMenuHighestScore;
+    [SerializeField] private List<TextMeshProUGUI> weaponUIs;
 
     Player player;
+    private List<bool> WeaponActivity;
+    private int currentWeaponIndex;
+
+    public static UIManager Instance;
 
     void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogError("There's another UI Manager as Instance");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         healthText.text = "N/A";
         scoreText.text = "N/A";
         numOfEnemiesText.text = "N/A";
@@ -38,6 +52,31 @@ public class UIManager : MonoBehaviour
         Enemy.OnAllSpawnedEnemiesChange -= UpdateNumOfEnemiesText;
         GameManager.Instance.OnGameEnd -= UpdateEndGameMenu;
         GameManager.Instance.OnStartMenu -= UpdateStartMenu;
+    }
+
+    private void Update()
+    {
+        if (player != null)
+        {
+            WeaponActivity = player.GetWeaponActivity();
+            currentWeaponIndex = player.GetCurrentWeaponIndex();
+
+            for (int i = 0; i < WeaponActivity.Count; i++)
+            {
+                if (i == currentWeaponIndex)
+                {
+                    weaponUIs[i].color = Color.yellow;
+                }
+                else if (i != currentWeaponIndex && WeaponActivity[i])
+                {
+                    weaponUIs[i].color = Color.white;
+                }
+                else
+                {
+                    weaponUIs[i].color = Color.gray3;
+                }
+            }
+        }
     }
 
     private void UpdateHealthText()
@@ -119,5 +158,16 @@ public class UIManager : MonoBehaviour
         {
             nukeIcons[i].SetActive(false);
         }
+
+        weaponUIs[0].color = Color.yellow;
+        for (int i = 1; i < weaponUIs.Count; i++)
+        {
+            weaponUIs[i].color = Color.gray3;
+        }
     }
+
+    //public void SetWeaponUIColour(int weaponIndex, Color colour)
+    //{
+    //    weaponUIs[weaponIndex].color = colour;
+    //}
 }
