@@ -108,9 +108,10 @@ MonoBehaviour:
   destroyEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
   attackAudio: {fileID: 0}
   destroyAudio: {fileID: 7932714878261026651}
-  score: 10
+  score: 1
   _attackCooldown: 1
   _attackDamage: 10
+  chasePlayer: 1
 --- !u!82 &7932714878261026651 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2016416498970811387, guid: 3c80f61224d768d4e9728119e346b433, type: 3}

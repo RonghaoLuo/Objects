@@ -62,6 +62,11 @@ public class Health
         return value;
     }
 
+    public int GetMaxHealth()
+    {
+        return maxValue;
+    }
+
     public void Kill()
     {
         Damage(GetHealth());

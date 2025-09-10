@@ -271,9 +271,10 @@ MonoBehaviour:
   destroyEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   attackAudio: {fileID: 0}
   destroyAudio: {fileID: 5065930239331873324}
-  score: 20
+  score: 2
   _attackCooldown: 0
   _attackDamage: 0
+  chasePlayer: 1
   _explosionDamage: 50
   _explosionRadius: 5
   _areaOfExplosion: {fileID: 159846889529027995}

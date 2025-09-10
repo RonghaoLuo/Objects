@@ -139,9 +139,10 @@ MonoBehaviour:
   destroyEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
   attackAudio: {fileID: 0}
   destroyAudio: {fileID: 643094300339466761}
-  score: 10
+  score: 2
   _attackCooldown: 0.5
   _attackDamage: 0
+  chasePlayer: 1
   distanceToAttack: 6
   currentWeapon: {fileID: 11400000, guid: 77b335d9ac0ca684e828105aad4921e1, type: 2}
   weaponTip: {fileID: 779712765384358133}

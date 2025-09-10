@@ -7,6 +7,9 @@ public class Enemy : Character
     [SerializeField] protected int score;
     [SerializeField] protected float _attackCooldown = 1f;
     [SerializeField] protected int _attackDamage;
+    [SerializeField] protected bool chasePlayer;
+    [SerializeField] protected float nukeResistanceFraction;
+
     protected float _nextAttackTime = 0f;
 
     protected Player player;
@@ -14,27 +17,23 @@ public class Enemy : Character
     public static List<Enemy> allSpawnedEnemies = new List<Enemy>();
     public static Action<int> OnAllSpawnedEnemiesChange;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
-        GameManager.Instance.OnGameEnd += RemovePlayerReference;
-        health.OnHealthZero += DoOnHealthZero;
-        health.OnHealthZero += TrySpawnItem;
-    }
-
     protected override void OnDestroy()
     {
         GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
         GameManager.Instance.OnGameEnd -= RemovePlayerReference;
         health.OnHealthZero -= DoOnHealthZero;
-        health.OnHealthZero -= TrySpawnItem;
+        health.OnHealthZero -= TrySpawnDrops;
 
         base.OnDestroy();
     }
 
     protected override void Start()
     {
+        GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
+        GameManager.Instance.OnGameEnd += RemovePlayerReference;
+        health.OnHealthZero += DoOnHealthZero;
+        health.OnHealthZero += TrySpawnDrops;
+
         allSpawnedEnemies.Add(this);
         ChangeSpriteColor(Color.orange);
         OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
@@ -47,7 +46,7 @@ public class Enemy : Character
 
     protected virtual void FixedUpdate()
     {
-        if (!player)
+        if (!player || !chasePlayer)
         {
             return;
         }
@@ -84,8 +83,13 @@ public class Enemy : Character
         player = null;
     }
 
-    private void TrySpawnItem()
+    protected virtual void TrySpawnDrops()
     {
-        ItemSpawnerManager.Instance.TrySpawnItem(transform.position, transform.rotation);
+        ItemSpawnerManager.Instance.TrySpawnItem(transform.position);
+    }
+
+    public float GetNukeResistanceFraction()
+    {
+        return nukeResistanceFraction;
     }
 }

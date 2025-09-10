@@ -5,8 +5,9 @@ public class ItemSpawnerManager : MonoBehaviour
 {
     //[SerializeField] private ItemDrop[] powerUpRates;
     [SerializeField] private GameObject[] itemPrefabs;
-    [SerializeField] private float chanceOfSpawn;
-    [SerializeField] private float despawnTime;
+    [SerializeField] private List<GameObject> weaponDropPrefabs;
+    [SerializeField] private float itemSpawnChance;
+    [SerializeField] private float itemDespawnTime;
 
     public List<GameObject> allManagerSpawnedItems = new List<GameObject>();
 
@@ -33,20 +34,31 @@ public class ItemSpawnerManager : MonoBehaviour
         GameManager.Instance.OnStartMenu -= DestroyAllManagerSpawnedItems;
     }
 
-    public void TrySpawnItem(Vector3 spawnPosition, Quaternion spawnRotation)
+    public void TrySpawnWeaponDrop(Vector3 spawnPosition)
+    {
+        if (weaponDropPrefabs.Count < 1)
+        {
+            return;
+        }
+        
+        GameObject randomWeapon = weaponDropPrefabs[Random.Range(0, weaponDropPrefabs.Count)];
+        GameObject weaponDrop = Instantiate(randomWeapon, spawnPosition, Quaternion.identity);
+    }
+
+    public void TrySpawnItem(Vector3 spawnPosition)
     {
         if (itemPrefabs.Length < 1)
         {
             return;
         }
-        if (Random.value <= chanceOfSpawn)
+        if (Random.value <= itemSpawnChance)
         {
             GameObject randomObject = itemPrefabs[Random.Range(0, itemPrefabs.Length)];
-            GameObject item = Instantiate(randomObject, spawnPosition, spawnRotation);
+            GameObject item = Instantiate(randomObject, spawnPosition, Quaternion.identity);
 
-            Destroy(item, despawnTime);
+            Destroy(item, itemDespawnTime);
+            // can also do weighted chance
         }
-        // can do weighted chance
     }
 
     public void DestroyAllManagerSpawnedItems()

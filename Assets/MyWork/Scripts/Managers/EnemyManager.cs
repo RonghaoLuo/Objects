@@ -9,9 +9,12 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float _spawnCooldown = 1f;
     [SerializeField] private List<Enemy> _allManagerSpawnedEnemies = new List<Enemy>(); // use hashset?
     [SerializeField] private List<Transform> allSpawnPoints = new List<Transform>();
+    [SerializeField] private Transform[] enemyStationSpawnBoundPoints;
     [SerializeField] private GameObject[] _enemyPrefabs;
+    [SerializeField] private GameObject[] enemyStationPrefabs;
 
     private Coroutine spawnEnemiesCoroutine;
+    private StationEnemy stationEnemy;
 
     public static EnemyManager Instance;
 
@@ -46,7 +49,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (currentMaxNumOfEnemy < maxNumOfEnemy)
         {
-            currentMaxNumOfEnemy = 2 + 2 * ScoreManager.Instance.GetCurrentScore() / 100;
+            currentMaxNumOfEnemy = 2 + 2 * ScoreManager.Instance.GetCurrentScore() / 10;
         }
         else
         {
@@ -54,13 +57,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void KillAllEnemy()
+    public void NukeAllEnemy()
     {
         List<Enemy> allEnemies = new List<Enemy>(Enemy.allSpawnedEnemies);
         foreach (Enemy enemy in allEnemies)
         {
             if (enemy == null) continue;
-            enemy.health.Kill();
+            enemy.health.Damage((int)(enemy.health.GetMaxHealth() * (1 - enemy.GetNukeResistanceFraction())));
         }
     }
 
@@ -121,5 +124,14 @@ public class EnemyManager : MonoBehaviour
     private void ResetMaxNumOfEnemy()
     {
         currentMaxNumOfEnemy = 2;
+    }
+
+    private void SpawnEnemyStation()
+    {
+        GameObject randomStationToSpawn = enemyStationPrefabs[Random.Range(0, enemyStationPrefabs.Length)];
+
+        GameObject clonedStation = Instantiate(randomStationToSpawn);
+        Transform randomSpawnPoint = enemyStationSpawnBoundPoints[Random.Range(0, enemyStationSpawnBoundPoints.Length)];
+        clonedStation.transform.position = randomSpawnPoint.position;
     }
 }

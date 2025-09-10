@@ -154,7 +154,7 @@ public class Player : Character
         numOfNukes--;
         OnNukeChange?.Invoke();
         
-        EnemyManager.Instance.KillAllEnemy();
+        EnemyManager.Instance.NukeAllEnemy();
     }
 
     private void StartFullAuto(float duration)

@@ -110,9 +110,10 @@ MonoBehaviour:
   destroyEffect: {fileID: 0}
   attackAudio: {fileID: 0}
   destroyAudio: {fileID: 6278321750469362630}
-  score: 10
+  score: 1
   _attackCooldown: 0
   _attackDamage: 0
+  chasePlayer: 0
   distanceToAttack: 6
   currentWeapon: {fileID: 0}
   weaponTip: {fileID: 0}
