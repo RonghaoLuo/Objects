@@ -30,7 +30,7 @@ public class Beam : MonoBehaviour
         }
         if (hitEffect)     // for modularity and safety check
         {
-            Instantiate(hitEffect, transform.position, transform.rotation);
+            Instantiate(hitEffect, collision.transform.position, collision.transform.rotation);
         }
     }
 }

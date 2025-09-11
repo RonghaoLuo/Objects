@@ -10,7 +10,18 @@ public class UICharacter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        character.health.OnHealthChange += UpdateHealthBar;
+        if (healthBarImage != null)
+        {
+            character.health.OnHealthChange += UpdateHealthBar;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (character != null)
+        {
+            character.health.OnHealthChange -= UpdateHealthBar;
+        }
     }
 
     // Update is called once per frame

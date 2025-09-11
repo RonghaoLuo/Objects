@@ -15,7 +15,10 @@ public class Enemy : Character
     protected Player player;
 
     public static List<Enemy> allSpawnedEnemies = new List<Enemy>();
+    public static List<StationEnemy> allSpawnedStations = new List<StationEnemy>();
+
     public static Action<int> OnAllSpawnedEnemiesChange;
+    public static Action<int> OnAllSpawnedStationsChange;
 
     protected override void OnDestroy()
     {
@@ -34,9 +37,18 @@ public class Enemy : Character
         health.OnHealthZero += DoOnHealthZero;
         health.OnHealthZero += TrySpawnDrops;
 
-        allSpawnedEnemies.Add(this);
+        if (this is StationEnemy station)
+        {
+            allSpawnedStations.Add(station);
+            OnAllSpawnedStationsChange?.Invoke(allSpawnedStations.Count);
+        }
+        else
+        {
+            allSpawnedEnemies.Add(this);
+            OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
+        }
+
         ChangeSpriteColor(Color.orange);
-        OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
         
         if (player == null)
         {
@@ -68,8 +80,16 @@ public class Enemy : Character
 
     protected virtual void DoOnHealthZero()
     {
-        allSpawnedEnemies.Remove(this);
-        OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
+        if (this is StationEnemy station)
+        {
+            allSpawnedStations.Remove(station);
+            OnAllSpawnedStationsChange?.Invoke(allSpawnedStations.Count);
+        }
+        else
+        {
+            allSpawnedEnemies.Remove(this);
+            OnAllSpawnedEnemiesChange?.Invoke(allSpawnedEnemies.Count);
+        }
         Explode();
     }
 

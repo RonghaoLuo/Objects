@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Rifle
   currentProjectileType: 0
-  damage: 50
+  damage: 20
   bulletSpeed: 20
   penetration: 4
   fireAudio: {fileID: 8300000, guid: 52f0eb934ff654344b305c7243d9d085, type: 3}
   fireAudioVolume: 0.3
   fireAudioPitch: 1
-  _bulletReference: {fileID: 6860604331482621228, guid: e6903cdafecc0244ebfca5990f9b240e, type: 3}
+  _bulletReference: {fileID: 6860604331482621228, guid: 39a180e89373ed74cb77a87d8540f370, type: 3}
   beamReference: {fileID: 0}

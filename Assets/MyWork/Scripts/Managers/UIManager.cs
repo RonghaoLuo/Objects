@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI numOfEnemiesText;
-    [SerializeField] private GameObject[] nukeIcons;
+    [SerializeField] private TextMeshProUGUI numOfStationsText;
+    [SerializeField] private Image[] nukeIcons;
     [SerializeField] private TextMeshProUGUI endMenuScore;
     [SerializeField] private TextMeshProUGUI endMenuHighestScore;
     [SerializeField] private TextMeshProUGUI startMenuHighestScore;
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPlayerSpawn += SetPlayerReference;
         ScoreManager.Instance.OnScoreChange += UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange += UpdateNumOfEnemiesText;
+        Enemy.OnAllSpawnedStationsChange += UpdateNumOfStationsText;
         GameManager.Instance.OnGameEnd += UpdateEndGameMenu;
         GameManager.Instance.OnStartMenu += UpdateStartMenu;
 
@@ -50,6 +53,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.OnPlayerSpawn -= SetPlayerReference;
         ScoreManager.Instance.OnScoreChange -= UpdateScoreText;
         Enemy.OnAllSpawnedEnemiesChange -= UpdateNumOfEnemiesText;
+        Enemy.OnAllSpawnedStationsChange -= UpdateNumOfStationsText;
         GameManager.Instance.OnGameEnd -= UpdateEndGameMenu;
         GameManager.Instance.OnStartMenu -= UpdateStartMenu;
     }
@@ -96,6 +100,11 @@ public class UIManager : MonoBehaviour
         numOfEnemiesText.text = $"Enemies: {numOfSpawnedEnemies}";
     }
 
+    private void UpdateNumOfStationsText(int numOfSpawnedStations)
+    {
+        numOfStationsText.text = $"Stations: {numOfSpawnedStations}";
+    }
+
     private void UpdateEndGameMenu()
     {
         endMenuScore.text = ScoreManager.Instance.GetCurrentScore().ToString();
@@ -114,11 +123,11 @@ public class UIManager : MonoBehaviour
         {
             if (i < numOfNukes)
             {
-                nukeIcons[i].SetActive(true);
+                nukeIcons[i].color = Color.white;
             }
             else
             {
-                nukeIcons[i].SetActive(false);
+                nukeIcons[i].color = Color.gray1;
             }
         }
     }
@@ -156,7 +165,7 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < nukeIcons.Length; i++)
         {
-            nukeIcons[i].SetActive(false);
+            nukeIcons[i].color = Color.gray1;
         }
 
         weaponUIs[0].color = Color.yellow;

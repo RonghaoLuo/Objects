@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1c2a6bd1ee1ac43ae55950defce56a, type: 3}
   m_Name: HE Laser
   m_EditorClassIdentifier: 
-  weaponName: HE Laser
+  weaponName: Energy Beam
   currentProjectileType: 1
-  damage: 100
+  damage: 20
   bulletSpeed: 0
   penetration: 100
   fireAudio: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}

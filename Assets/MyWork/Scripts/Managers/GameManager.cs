@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        MusicManager.Instance.PlayRandomMenuBGM();
+    }
+
     public void StartGameNormal()
     {
         OnGameStart?.Invoke();
@@ -45,6 +50,8 @@ public class GameManager : MonoBehaviour
 
         
         enemyManager.StartSpawnEnemiesCoroutine();
+
+        MusicManager.Instance.PlayRandomPlayBGM();
     }
 
     public void StartGameWithAllWeapons()
@@ -76,6 +83,8 @@ public class GameManager : MonoBehaviour
 
         endMenu.SetActive(false);
         startMenu.SetActive(true);
+
+        MusicManager.Instance.PlayRandomMenuBGM();
     }
 
     public Player GetPlayerReference()

@@ -63,6 +63,7 @@ MonoBehaviour:
   _attackCooldown: 0
   _attackDamage: 0
   chasePlayer: 0
+  nukeResistanceFraction: 0
 --- !u!114 &2030785889228296257
 MonoBehaviour:
   m_ObjectHideFlags: 0

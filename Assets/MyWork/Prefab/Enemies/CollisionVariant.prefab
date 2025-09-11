@@ -112,6 +112,7 @@ MonoBehaviour:
   _attackCooldown: 1
   _attackDamage: 10
   chasePlayer: 1
+  nukeResistanceFraction: 0
 --- !u!82 &7932714878261026651 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2016416498970811387, guid: 3c80f61224d768d4e9728119e346b433, type: 3}

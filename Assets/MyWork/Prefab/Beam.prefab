@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2966634113799688401, guid: 8f2e0e615e13735418c2925e9201fd3b, type: 3}
+  m_Sprite: {fileID: -4048762077345216184, guid: 9743f7fc4c870f94aa6310d862eedfe3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 1869217972020273015}
   - component: {fileID: 1414982083696256986}
   m_Layer: 8
-  m_Name: Laser Beam
+  m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   damage: 0
   residenceTime: 0.25
   _myRigidbody: {fileID: 1414982083696256986}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6121475481359698776, guid: 071a87a31b423364aa90475e60cd222b, type: 3}
 --- !u!50 &1414982083696256986
 Rigidbody2D:
   serializedVersion: 5

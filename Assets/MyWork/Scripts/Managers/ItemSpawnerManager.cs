@@ -8,6 +8,7 @@ public class ItemSpawnerManager : MonoBehaviour
     [SerializeField] private List<GameObject> weaponDropPrefabs;
     [SerializeField] private float itemSpawnChance;
     [SerializeField] private float itemDespawnTime;
+    [SerializeField] private float weaponDespawnTime;
 
     public List<GameObject> allManagerSpawnedItems = new List<GameObject>();
 
@@ -43,6 +44,8 @@ public class ItemSpawnerManager : MonoBehaviour
         
         GameObject randomWeapon = weaponDropPrefabs[Random.Range(0, weaponDropPrefabs.Count)];
         GameObject weaponDrop = Instantiate(randomWeapon, spawnPosition, Quaternion.identity);
+
+        Destroy(weaponDrop, weaponDespawnTime);
     }
 
     public void TrySpawnItem(Vector3 spawnPosition)
